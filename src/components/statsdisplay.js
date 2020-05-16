@@ -1,6 +1,11 @@
 import React from 'react';
 import Statstable from './table.js'
-import {CircularProgress,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper} from '@material-ui/core';
+import {CircularProgress} from '@material-ui/core';
+import InfectedCard from './stats_cards/infected_card.js'
+import DeathCard from './stats_cards/deaths_card.js'
+import CuredCard from './stats_cards/cured_card.js'
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 function Statsdisplay(props){
     if (props.statsstate.loading == true) {
@@ -9,7 +14,25 @@ function Statsdisplay(props){
         if (props.statsstate.error == true) {
             return (<h1>Error</h1>)
         } else {
-            return (<Statstable statsstate={props.statsstate.stats}/>)
+            return (
+            <>
+                <br />
+                <Box>
+                    <Grid container justify="center" spacing={2}>
+                        <Grid item xs={3}>
+                            <InfectedCard stats={props.statsstate.stats} />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <DeathCard stats={props.statsstate.stats} />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <CuredCard stats={props.statsstate.stats} />
+                        </Grid>
+                    </Grid>
+                </Box>
+                <Statstable statsstate={props.statsstate.stats}/>
+            </>
+            )
         }
     }
 }

@@ -23,7 +23,6 @@ function Statstable(props){
         return tablelist
     }
     React.useEffect(function() {
-        console.log(createstatsrows(props.statsstate))
         settablejson(createstatsrows(props.statsstate))
     },[])
     return (
