@@ -1,6 +1,6 @@
 import React from 'react';
 import Statstable from './table.js'
-import {CircularProgress} from '@material-ui/core';
+import {CircularProgress,Typography} from '@material-ui/core';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
 import CuredCard from './stats_cards/cured_card.js'
@@ -17,6 +17,7 @@ function Statsdisplay(props){
             return (
             <>
                 <br />
+                <Typography variant="h5" align="center">As on: {props.statsstate.stats["timestamp"]["latest_updated_time"]}</Typography>
                 <Box m={1}>
                     <Grid container justify="center" spacing={2}>
                         <Grid item md={4}>

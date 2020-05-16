@@ -43,24 +43,52 @@ function Statstable(props){
                             <TableCell style={{color:"white"}} align="right">New Cured</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {tablejson.map((row) => (
-                            <TableRow key={row.state} onClick={function() {
-                                console.log("Hi")
-                            }}>
-                                <TableCell component="th" scope="row">
-                                    {row.state}
-                                </TableCell>
-                                <TableCell align="right">{row.active_cases}</TableCell>
-                                <TableCell align="right">{row.total}</TableCell>
-                                <TableCell align="right">{row.new_cases}</TableCell>
-                                <TableCell align="right">{row.deaths}</TableCell>
-                                <TableCell align="right">{row.new_deaths}</TableCell>
-                                <TableCell align="right">{row.cured}</TableCell>
-                                <TableCell align="right">{row.new_cured}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
+                        <TableBody>
+                            {tablejson.map(function(row) {
+                                if (row.state != "India") {
+                                    let new_cases;
+                                    let new_cases_bg = "white";
+                                    let new_cases_text = "black";
+                                    let new_deaths;
+                                    let new_deaths_bg = "white";
+                                    let new_deaths_text = "black";
+                                    let new_cured;
+                                    let new_cured_bg = "white";
+                                    let new_cured_text = "black";
+                                    if (row.new_cases != 0) {
+                                        new_cases="+"+row.new_cases
+                                        new_cases_bg = "purple"
+                                        new_cases_text="white"
+                                    }
+                                    if (row.new_deaths != 0) {
+                                        new_deaths="+"+row.new_deaths
+                                        new_deaths_bg="red"
+                                        new_deaths_text="white"
+                                    }
+                                    if (row.new_cured != 0) {
+                                        new_cured="+"+row.new_cured
+                                        new_cured_bg="green"
+                                        new_cured_text="white"
+                                    }
+                                    return (
+                                        <TableRow key={row.state} onClick={function() {
+                                            console.log("Hi")
+                                        }}>
+                                            <TableCell component="th" scope="row">
+                                                {row.state}
+                                            </TableCell>
+                                            <TableCell align="right">{row.active_cases}</TableCell>
+                                            <TableCell align="right">{row.total}</TableCell>
+                                            <TableCell align="right" style={{backgroundColor:new_cases_bg,color:new_cases_text}}>{new_cases}</TableCell>
+                                            <TableCell align="right">{row.deaths}</TableCell>
+                                            <TableCell align="right" style={{backgroundColor:new_deaths_bg,color:new_deaths_text}}>{new_deaths}</TableCell>
+                                            <TableCell align="right">{row.cured}</TableCell>
+                                            <TableCell align="right" style={{backgroundColor:new_cured_bg,color:new_cured_text}}>{new_cured}</TableCell>
+                                        </TableRow>
+                                    )
+                                }
+                            })}
+                        </TableBody>
                     </Table>
             </TableContainer>
         </Container>
