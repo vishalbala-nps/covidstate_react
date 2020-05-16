@@ -1,8 +1,10 @@
 import React from 'react';
 import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container} from '@material-ui/core';
+import { useHistory } from "react-router-dom";
 
 function Statstable(props){
     const [tablejson,settablejson] = React.useState([])
+    let history = useHistory();
     function createstatsrows(statsjson) {
         let tstamp = statsjson["timestamp"]
         let statslist = statsjson["data"][tstamp["latest_updated_date"]]
@@ -72,7 +74,7 @@ function Statstable(props){
                                     }
                                     return (
                                         <TableRow key={row.state} onClick={function() {
-                                            console.log("Hi")
+                                            history.push("/state/"+row.state)
                                         }}>
                                             <TableCell component="th" scope="row">
                                                 {row.state}
