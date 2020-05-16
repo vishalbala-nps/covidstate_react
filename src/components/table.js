@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper} from '@material-ui/core';
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container} from '@material-ui/core';
 
 function Statstable(props){
     const [tablejson,settablejson] = React.useState([])
@@ -29,38 +29,42 @@ function Statstable(props){
     return (
         <>
             <br />
-            <TableContainer component={Paper}>
-                <Table aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                    <TableCell>State</TableCell>
-                    <TableCell align="right">Active Patients</TableCell>
-                    <TableCell align="right">Infected People </TableCell>
-                    <TableCell align="right">New Patients</TableCell>
-                    <TableCell align="right">Total Deaths</TableCell>
-                    <TableCell align="right">New Deaths</TableCell>
-                    <TableCell align="right">Cured</TableCell>
-                    <TableCell align="right">New Cured</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {tablejson.map((row) => (
-                        <TableRow key={row.state}>
-                            <TableCell component="th" scope="row">
-                                {row.state}
-                            </TableCell>
-                            <TableCell align="right">{row.active_cases}</TableCell>
-                            <TableCell align="right">{row.total}</TableCell>
-                            <TableCell align="right">{row.new_cases}</TableCell>
-                            <TableCell align="right">{row.deaths}</TableCell>
-                            <TableCell align="right">{row.new_deaths}</TableCell>
-                            <TableCell align="right">{row.cured}</TableCell>
-                            <TableCell align="right">{row.new_cured}</TableCell>
+            <Container maxWidth="lg">
+                <TableContainer component={Paper}>
+                    <Table aria-label="simple table">
+                    <TableHead style={{backgroundColor:"black"}}>
+                        <TableRow>
+                            <TableCell style={{color:"white"}}>State</TableCell>
+                            <TableCell style={{color:"white"}} align="right">Active Patients</TableCell>
+                            <TableCell style={{color:"white"}} align="right">Infected People </TableCell>
+                            <TableCell style={{color:"white"}} align="right">New Patients</TableCell>
+                            <TableCell style={{color:"white"}} align="right">Total Deaths</TableCell>
+                            <TableCell style={{color:"white"}} align="right">New Deaths</TableCell>
+                            <TableCell style={{color:"white"}} align="right">Cured</TableCell>
+                            <TableCell style={{color:"white"}} align="right">New Cured</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-                </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {tablejson.map((row) => (
+                            <TableRow key={row.state} onClick={function() {
+                                console.log("Hi")
+                            }}>
+                                <TableCell component="th" scope="row">
+                                    {row.state}
+                                </TableCell>
+                                <TableCell align="right">{row.active_cases}</TableCell>
+                                <TableCell align="right">{row.total}</TableCell>
+                                <TableCell align="right">{row.new_cases}</TableCell>
+                                <TableCell align="right">{row.deaths}</TableCell>
+                                <TableCell align="right">{row.new_deaths}</TableCell>
+                                <TableCell align="right">{row.cured}</TableCell>
+                                <TableCell align="right">{row.new_cured}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                    </Table>
+            </TableContainer>
+        </Container>
       </>
     )
 }
