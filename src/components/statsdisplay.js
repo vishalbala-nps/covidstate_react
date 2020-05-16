@@ -17,15 +17,15 @@ function Statsdisplay(props){
             return (
             <>
                 <br />
-                <Box>
+                <Box m={1}>
                     <Grid container justify="center" spacing={2}>
-                        <Grid item xs={3}>
+                        <Grid item md={4}>
                             <InfectedCard stats={props.statsstate.stats} />
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={4}>
                             <DeathCard stats={props.statsstate.stats} />
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item md={4}>
                             <CuredCard stats={props.statsstate.stats} />
                         </Grid>
                     </Grid>
