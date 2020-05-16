@@ -48,7 +48,7 @@ function CuredCard(mainprops) {
             <Card>
                 <CardContent>
                     <Typography variant="h4" align="center">Cured</Typography>
-                    <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["cured"]} (+{mainprops.stats["data"][tstamp]["India"]["new_cured"]})</Typography>
+                    <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["cured"]} <small style={{color:"#00CB58"}}>(+{mainprops.stats["data"][tstamp]["India"]["new_cured"]})</small></Typography>
                     {chartjsx}
                 </CardContent>
             </Card>

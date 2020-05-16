@@ -48,7 +48,7 @@ function DeathCard(mainprops) {
             <Card>
                 <CardContent>
                     <Typography variant="h4" align="center">Deaths</Typography>
-                    <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["deaths"]} (+{mainprops.stats["data"][tstamp]["India"]["new_deaths"]})</Typography>
+                    <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["deaths"]} <small style={{color:"#FD2D2D"}}>(+{mainprops.stats["data"][tstamp]["India"]["new_deaths"]})</small></Typography>
                     {chartjsx}
                 </CardContent>
             </Card>
