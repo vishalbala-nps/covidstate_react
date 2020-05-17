@@ -39,7 +39,13 @@ function CuredCard(mainprops) {
                             labels: labels
                         }
                     } options={{
-                        responsive: true
+                        scales:{
+                            yAxes: [{
+                                ticks: {
+                                    maxTicksLimit: 6
+                                },
+                            }]
+                        }
                     }}/>
                 </div>
             )
