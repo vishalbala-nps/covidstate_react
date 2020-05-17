@@ -2,7 +2,7 @@ import React from 'react';
 import {AppBar,Card,CardActions,CardContent, Typography} from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Line } from 'react-chartjs-2';
+import { Line,Bar } from 'react-chartjs-2';
 
 function DeathCard(mainprops) {
     const [tabvalue, settabvalue] = React.useState(0);
@@ -12,13 +12,15 @@ function DeathCard(mainprops) {
     function TabPanel(props) {
         let tstamp = mainprops.stats["timestamp"]["latest_updated_date"];
         let chartjsx;
+        let labels = [];
+        let cdata= [];
+        let cbdata= [];
+        for (let key in mainprops.stats["data"] ) {
+            labels.push(key)
+            cdata.push(mainprops.stats["data"][key]["India"]["deaths"])
+            cbdata.push(mainprops.stats["data"][key]["India"]["new_deaths"])
+        }
         if (props.value == 0){
-            let labels = [];
-            let cdata= [];
-            for (let key in mainprops.stats["data"] ) {
-                labels.push(key)
-                cdata.push(mainprops.stats["data"][key]["India"]["deaths"])
-            }
             chartjsx = (
                 <div>
                     <Line data={
@@ -42,7 +44,19 @@ function DeathCard(mainprops) {
                 </div>
             )
         } else if (props.value == 1){
-            chartjsx = <p>Insert daily chart</p>
+            chartjsx = (
+                <div>
+                    <Bar data={{
+                        datasets: [{
+                            label: 'Daily Increase',
+                            data: cbdata,
+                            backgroundColor: 'rgba(254, 30, 31, 1)',
+                            borderColor: 'rgba(254, 30, 31, 1)'
+                        }],
+                        labels: labels
+                    }}/>
+                </div>
+            )
         }
         return (
             <Card>
