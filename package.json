@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-docker": "npm install && npm run build && docker build . -t covidstate_react"
   },
   "eslintConfig": {
     "extends": "react-app"
