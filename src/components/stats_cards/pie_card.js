@@ -78,7 +78,6 @@ function PieCard(mainprops) {
             console.log(labels)
             chartjsx = (
                 <div>
-                    <Typography variant="h5" align="center">Active Patients</Typography>
                     <Pie data={{datasets:[
                         {
                             data: piearr,
@@ -107,7 +106,6 @@ function PieCard(mainprops) {
             console.log(labels)
             chartjsx = (
                 <div>
-                    <Typography variant="h5" align="center">Infected Patients</Typography>
                     <Pie data={{datasets:[
                         {
                             data: piearr,
@@ -136,7 +134,6 @@ function PieCard(mainprops) {
             console.log(labels)
             chartjsx = (
                 <div>
-                    <Typography variant="h5" align="center">Deaths</Typography>
                     <Pie data={{datasets:[
                         {
                             data: piearr,
@@ -165,7 +162,6 @@ function PieCard(mainprops) {
             console.log(labels)
             chartjsx = (
                 <div>
-                    <Typography variant="h5" align="center">Cured</Typography>
                     <Pie data={{datasets:[
                         {
                             data: piearr,
@@ -190,8 +186,10 @@ function PieCard(mainprops) {
         return (
             <Card>
                 <CardContent>
-                    <Typography variant="h4" align="center">Statewise Pie Charts</Typography>
+                    <Typography variant="h5" align="center">Statewise Pie Charts</Typography>
                     {chartjsx}
+                    <br />
+                    <br />
                 </CardContent>
             </Card>
         )

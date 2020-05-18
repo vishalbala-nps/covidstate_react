@@ -4,6 +4,7 @@ import {CircularProgress,Typography} from '@material-ui/core';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
 import CuredCard from './stats_cards/cured_card.js'
+import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -38,7 +39,7 @@ function Statsdisplay(props){
                             <PieCard stats={props.statsstate.stats} />
                         </Grid>
                         <Grid item sm={6}>
-                            <DeathCard stats={props.statsstate.stats} />
+                            <ActiveCard stats={props.statsstate.stats} />
                         </Grid>
                     </Grid>
                 </Box>
