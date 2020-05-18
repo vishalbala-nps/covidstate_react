@@ -93,7 +93,7 @@ function ActiveCard(mainprops) {
             <AppBar position="static" elevation={0}>
                 <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#FD2D2D"}}>
                     <Tab label="Cumulative"/>
-                    <Tab label="Deaths"/>
+                    <Tab label="Daily"/>
                 </Tabs>
             </AppBar>
             <TabPanel value={tabvalue} />
