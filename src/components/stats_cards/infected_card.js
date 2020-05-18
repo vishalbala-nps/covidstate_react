@@ -46,7 +46,7 @@ function InfectedCard(mainprops) {
                                 },
                             }]
                         }
-                    }}/>
+                    }} />
                 </div>
             )
         } else if (props.value == 1){
@@ -60,6 +60,10 @@ function InfectedCard(mainprops) {
                             borderColor: 'rgba(174, 93, 201, 1)'
                         }],
                         labels: labels
+                    }}  options={{
+                        plugins: {
+                            labels: false
+                        }
                     }}/>
                 </div>
             )

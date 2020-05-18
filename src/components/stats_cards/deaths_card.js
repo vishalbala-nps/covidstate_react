@@ -60,6 +60,10 @@ function DeathCard(mainprops) {
                             borderColor: 'rgba(254, 30, 31, 1)'
                         }],
                         labels: labels
+                    }} options={{
+                        plugins: {
+                            labels: false
+                        }
                     }}/>
                 </div>
             )

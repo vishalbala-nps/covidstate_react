@@ -60,6 +60,10 @@ function CuredCard(mainprops) {
                             borderColor: 'rgba(0, 203, 88, 1)'
                         }],
                         labels: labels
+                    }} options={{
+                        plugins: {
+                            labels: false
+                        }
                     }}/>
                 </div>
             )
