@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container} from '@material-ui/core';
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container,TextField} from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 
 function Statstable(props){
@@ -31,6 +31,14 @@ function Statstable(props){
         <>
             <br />
             <Container maxWidth="lg">
+                <TextField label="Filter by states" variant="filled" style={{width:"100%"}} onChange={function(event) {
+                    let curlist = createstatsrows(props.statsstate)
+                    let searched = curlist.filter(function(state) {
+                        return state["state"].includes(event.target.value)
+                    })
+                    settablejson(searched)
+                }}/>
+                <br/><br/>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                     <TableHead style={{backgroundColor:"black"}}>
