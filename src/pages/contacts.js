@@ -29,48 +29,50 @@ function Contacts(props) {
   },[])
   //Functions
   function Createlist(props) {
-    let websitejsx;
-    let emailjsx;
-    let wajsx;
-    if (props.contactjson.contacts["website"] != null) {
-      websitejsx = (
-          <ListItem button component="a" href={props.contactjson.contacts["website"]}>
-            <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Language /> {props.contactjson.contacts["website"]}</Typography>}></ListItemText>
-          </ListItem>
-      )
-    }
-    if (props.contactjson.contacts["email"] != null) {
-      emailjsx = (
-          <ListItem button component="a" href={"mailto:"+props.contactjson.contacts["email"]}>
-            <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Email /> {props.contactjson.contacts["email"]}</Typography>}></ListItemText>
-          </ListItem>
-      )
-    }
-    if (props.contactjson.contacts["whatsapp"] != null) {
-      wajsx = (
-          <ListItem button component="a" href={"wa.me/"+props.contactjson.contacts["whatsapp"]}>
-            <ListItemText primary={<Typography style={{color:"#4B48B7"}}><WhatsApp /> {props.contactjson.contacts["whatsapp"]}</Typography>}></ListItemText>
-          </ListItem>
-      )
-    }
-    return (
-      <>
-        <ListItem>
-          <List>
-            <ListItem>
-              <ListItemText primary={<Typography><b>{props.contactjson.state}</b></Typography>}/>
+    if (props.contactjson.state != "India"){
+      let websitejsx;
+      let emailjsx;
+      let wajsx;
+      if (props.contactjson.contacts["website"] != null) {
+        websitejsx = (
+            <ListItem button component="a" href={props.contactjson.contacts["website"]}>
+              <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Language /> {props.contactjson.contacts["website"]}</Typography>}></ListItemText>
             </ListItem>
-            <ListItem button component="a" href={"tel:"+props.contactjson.contacts["phone"]}>
-              <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Phone /> {props.contactjson.contacts["phone"]}</Typography>} />
+        )
+      }
+      if (props.contactjson.contacts["email"] != null) {
+        emailjsx = (
+            <ListItem button component="a" href={"mailto:"+props.contactjson.contacts["email"]}>
+              <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Email /> {props.contactjson.contacts["email"]}</Typography>}></ListItemText>
             </ListItem>
-            {websitejsx}
-            {emailjsx}
-            {wajsx}
-          </List>
-        </ListItem>
-        <Divider />
-      </>
-    )
+        )
+      }
+      if (props.contactjson.contacts["whatsapp"] != null) {
+        wajsx = (
+            <ListItem button component="a" href={"wa.me/"+props.contactjson.contacts["whatsapp"]}>
+              <ListItemText primary={<Typography style={{color:"#4B48B7"}}><WhatsApp /> {props.contactjson.contacts["whatsapp"]}</Typography>}></ListItemText>
+            </ListItem>
+        )
+      }
+      return (
+        <>
+          <ListItem>
+            <List>
+              <ListItem>
+                <ListItemText primary={<Typography><b>{props.contactjson.state}</b></Typography>}/>
+              </ListItem>
+              <ListItem button component="a" href={"tel:"+props.contactjson.contacts["phone"]}>
+                <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Phone /> {props.contactjson.contacts["phone"]}</Typography>} />
+              </ListItem>
+              {websitejsx}
+              {emailjsx}
+              {wajsx}
+            </List>
+          </ListItem>
+          <Divider />
+        </>
+      )
+    }
   }
   if (getcontacts.loading == true) {
     contactsjsx = (<CircularProgress />)
