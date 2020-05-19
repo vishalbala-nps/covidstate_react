@@ -29,7 +29,6 @@ function Contacts(props) {
   },[])
   //Functions
   function Createlist(props) {
-    if (props.contactjson.state != "India"){
       let websitejsx;
       let emailjsx;
       let wajsx;
@@ -72,7 +71,6 @@ function Contacts(props) {
           <Divider />
         </>
       )
-    }
   }
   if (getcontacts.loading == true) {
     contactsjsx = (<CircularProgress />)
@@ -83,7 +81,9 @@ function Contacts(props) {
         let contactslist = []
         for (let key in getcontacts.messageslist) {
           if (getcontacts.messageslist.hasOwnProperty(key)) {
-            contactslist.push({state:key,contacts:getcontacts.messageslist[key]})
+            if (key != "India") {
+              contactslist.push({state:key,contacts:getcontacts.messageslist[key]})
+            }
           }
         }
         contactsjsx = (
