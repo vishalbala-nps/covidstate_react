@@ -44,7 +44,7 @@ function Contacts(props) {
                 <Typography variant="h6"><Phone /> <Link href={"tel:"+getcontacts.messageslist["India"]["phone"]}>{getcontacts.messageslist["India"]["phone"]}</Link></Typography>
                 <Typography variant="h6"><WhatsApp /> <Link href={"http://wa.me/"+getcontacts.messageslist["India"]["whatsapp"]}>{getcontacts.messageslist["India"]["whatsapp"]}</Link></Typography>
                 <Typography variant="h6"><Email /> <Link href={"mailto:"+getcontacts.messageslist["India"]["email"]}>{getcontacts.messageslist["India"]["email"]}</Link></Typography>
-                <Typography variant="h6"><Language /> <Link href={"http://"+getcontacts.messageslist["India"]["website"]}>{getcontacts.messageslist["India"]["website"]}</Link></Typography>
+                <Typography variant="h6"><Language /> <Link href={getcontacts.messageslist["India"]["website"]}>{getcontacts.messageslist["India"]["website"]}</Link></Typography>
               </CardContent>
             </Card>
           </Box>
