@@ -8,13 +8,15 @@ import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import LoadingScreen from '../components/loading_screen.js'
+import ErrorScreen from '../components/onerror.js'
 
 function Statsdisplay(props){
     if (props.statsstate.loading == true) {
-        return (<CircularProgress />)
+        return (<LoadingScreen />)
     } else {
         if (props.statsstate.error == true) {
-            return (<h1>Error</h1>)
+            return (<ErrorScreen />)
         } else {
             return (
             <>

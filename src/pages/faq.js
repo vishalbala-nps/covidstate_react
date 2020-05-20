@@ -4,6 +4,8 @@ import axios from 'axios'
 import {CircularProgress,ExpansionPanel,ExpansionPanelSummary,ExpansionPanelDetails,Typography} from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import apiUrl from '../components/api_url.js'
+import LoadingScreen from '../components/loading_screen.js'
+import ErrorScreen from '../components/onerror.js'
 
 function FAQ(props) {
   const [getfaq,setfaq] = React.useReducer(function(state,action) {
@@ -48,7 +50,7 @@ function FAQ(props) {
     return (
       <>
         <TitleBar type="backbar" title="FAQ" />
-        <CircularProgress />
+        <LoadingScreen />
       </>
     )
   } else {
@@ -56,7 +58,7 @@ function FAQ(props) {
       return (
         <>
           <TitleBar type="backbar" title="FAQ" />
-          <h1>Error</h1>
+          <ErrorScreen />
         </>
       )
     } else {

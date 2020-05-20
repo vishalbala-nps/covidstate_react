@@ -4,6 +4,8 @@ import {CircularProgress,Box,Card,CardContent,Typography,Link,List,ListItem,List
 import {Phone,WhatsApp,Email,Language} from '@material-ui/icons';
 import axios from 'axios'
 import apiUrl from '../components/api_url.js'
+import LoadingScreen from '../components/loading_screen.js'
+import ErrorScreen from '../components/onerror.js'
 
 function Contacts(props) {
   let contactsjsx;
@@ -74,10 +76,10 @@ function Contacts(props) {
       )
   }
   if (getcontacts.loading == true) {
-    contactsjsx = (<CircularProgress />)
+    contactsjsx = (<LoadingScreen />)
   } else {
     if (getcontacts.error == true) {
-      contactsjsx = (<h1>Error</h1>)
+      contactsjsx = (<ErrorScreen />)
     } else {
         let contactslist = []
         for (let key in getcontacts.messageslist) {

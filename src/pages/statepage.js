@@ -9,6 +9,8 @@ import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import apiUrl from '../components/api_url.js'
+import LoadingScreen from '../components/loading_screen.js'
+import ErrorScreen from '../components/onerror.js'
 
 function Statepage(props) {
   const state = props.match.params.statename
@@ -37,10 +39,10 @@ function Statepage(props) {
     })
   },[])
   if (stats.loading == true) {
-    resjsx = (<CircularProgress />)
+    resjsx = (<LoadingScreen />)
   } else if (stats.loading == false) {
     if (stats.error == true) {
-      resjsx = (<h1>Error</h1>)
+      resjsx = (<ErrorScreen />)
     } else {
       resjsx = (
         <>
