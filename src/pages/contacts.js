@@ -3,6 +3,7 @@ import TitleBar from '../components/titlebar.js'
 import {CircularProgress,Box,Card,CardContent,Typography,Link,List,ListItem,ListItemText,Divider} from '@material-ui/core';
 import {Phone,WhatsApp,Email,Language} from '@material-ui/icons';
 import axios from 'axios'
+import apiUrl from '../components/api_url.js'
 
 function Contacts(props) {
   let contactsjsx;
@@ -16,7 +17,7 @@ function Contacts(props) {
     }
   },{loading:true,error:false,messageslist:[]})
   React.useEffect(function() {
-    axios.get("http://covidstate.in/api/v1/contacts").then(function(result) {
+    axios.get(apiUrl+"/contacts").then(function(result) {
       setcontacts({
         type: "DATA_LOADED",
         payload: result.data

@@ -3,7 +3,7 @@ import TitleBar from '../components/titlebar.js'
 import axios from 'axios'
 import {CircularProgress,ExpansionPanel,ExpansionPanelSummary,ExpansionPanelDetails,Typography} from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import apiUrl from '../components/api_url.js'
 
 function FAQ(props) {
   const [getfaq,setfaq] = React.useReducer(function(state,action) {
@@ -16,7 +16,7 @@ function FAQ(props) {
     }
   },{loading:true,error:false,faqlist:[]})
   React.useEffect(function() {
-    axios.get("http://covidstate.in/api/v1/faqs").then(function(result) {
+    axios.get(apiUrl+"/faqs").then(function(result) {
       setfaq({
         type: "DATA_LOADED",
         payload: result.data

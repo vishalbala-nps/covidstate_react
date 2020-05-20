@@ -3,6 +3,7 @@ import TitleBar from '../components/titlebar.js'
 import MessagesDisplay from '../components/messages.js'
 import Statsdisplay from '../components/statsdisplay.js'
 import axios from 'axios'
+import apiUrl from '../components/api_url.js'
 
 function HomePage() {
   const [getmessages,setmessages] = React.useReducer(function(state,action) {
@@ -25,7 +26,7 @@ function HomePage() {
     }
   },{loading:true,error:false,stats:[]})
   React.useEffect(function() {
-    axios.get("http://covidstate.in/api/v1/messages").then(function(result) {
+    axios.get(apiUrl+"/messages").then(function(result) {
       setmessages({
         type: "DATA_LOADED",
         payload: result.data["messages"]
@@ -33,7 +34,7 @@ function HomePage() {
     }).catch(function() {
       setmessages({type: "DATA_ERROR"})
     })
-    axios.get("http://covidstate.in/api/v1/data?type=historical").then(function(result){
+    axios.get(apiUrl+"/data?type=historical").then(function(result){
       setstats({
         type: "DATA_LOADED",
         payload: result.data

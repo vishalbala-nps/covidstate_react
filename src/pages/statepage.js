@@ -8,6 +8,7 @@ import InfectedCard from '../components/state_cards/infected_card.js'
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import apiUrl from '../components/api_url.js'
 
 function Statepage(props) {
   const state = props.match.params.statename
@@ -24,7 +25,7 @@ function Statepage(props) {
     },{loading:true,error:false,stats:{}}
   )
   React.useEffect(function() {
-    axios.get("http://covidstate.in/api/v1/data?type=historical&state="+state).then(function(result) {
+    axios.get(apiUrl+"/data?type=historical&state="+state).then(function(result) {
       setstats({
         type: "DATA_LOADED",
         payload: result.data
