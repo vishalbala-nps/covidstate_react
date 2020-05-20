@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../components/titlebar.js'
-import {Box,Card,CardContent,Typography,Link,List,ListItem,ListItemText,Divider} from '@material-ui/core';
+import {Box,Card,CardContent,Typography,Link,List,ListItem,ListItemText,Divider,TextField} from '@material-ui/core';
 import {Phone,WhatsApp,Email,Language} from '@material-ui/icons';
 import axios from 'axios'
 import apiUrl from '../components/api_url.js'
@@ -18,6 +18,8 @@ function Contacts(props) {
       return new Error()
     }
   },{loading:true,error:false,messageslist:[]})
+  const [getsearch,setsearch] = React.useState("")
+
   React.useEffect(function() {
     axios.get(apiUrl+"/contacts").then(function(result) {
       setcontacts({
@@ -89,6 +91,10 @@ function Contacts(props) {
             }
           }
         }
+        const curcontact = contactslist
+        contactslist = curcontact.filter(function(state) {
+          return state["state"].includes(getsearch)
+        })
         contactsjsx = (
           <Box m={1}>
             <br />
@@ -102,6 +108,10 @@ function Contacts(props) {
                 <Typography variant="h6"><Language style={{color:"#4B48B7"}}/> <Link href={getcontacts.messageslist["India"]["website"]}>{getcontacts.messageslist["India"]["website"]}</Link></Typography>
               </CardContent>
             </Card>
+            <br />
+            <TextField label="Filter by states" variant="filled" style={{width:"100%"}} onChange={function(event) {
+              setsearch(event.target.value)
+            }} />
             <List>
               {contactslist.map(function(item,index) {
                 return (<Createlist contactjson={item} key={index}/>)
