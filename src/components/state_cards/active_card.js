@@ -1,8 +1,8 @@
 import React from 'react';
-import {AppBar,Card,CardActions,CardContent, Typography} from '@material-ui/core';
+import {AppBar,Card,CardContent, Typography} from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Line,Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 function ActiveCard(mainprops) {
     const [tabvalue, settabvalue] = React.useState(0);

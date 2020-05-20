@@ -3,7 +3,13 @@ import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Contai
 import { useHistory } from "react-router-dom";
 
 function Statstable(props){
-    const [tablejson,settablejson] = React.useState([])
+    const [tablejson,settablejson] = React.useReducer(function(state,action) {
+        if (action.type == "ADD_TO_TABLE") {
+            return createstatsrows(props.statsstate)
+        } else if (action.type == "SET_SEARCH") {
+            return action.payload
+        }
+    },[])
     let history = useHistory();
     function createstatsrows(statsjson) {
         let tstamp = statsjson["timestamp"]
@@ -25,7 +31,9 @@ function Statstable(props){
         return tablelist
     }
     React.useEffect(function() {
-        settablejson(createstatsrows(props.statsstate))
+        settablejson({
+            type: "ADD_TO_TABLE"
+        })
     },[])
     return (
         <>
@@ -36,7 +44,10 @@ function Statstable(props){
                     let searched = curlist.filter(function(state) {
                         return state["state"].includes(event.target.value)
                     })
-                    settablejson(searched)
+                    settablejson({
+                        type: "SET_SEARCH",
+                        payload: searched
+                    })
                 }}/>
                 <br/><br/>
                 <TableContainer component={Paper}>

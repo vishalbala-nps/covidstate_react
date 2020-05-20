@@ -1,6 +1,6 @@
 import React from 'react';
 import Statstable from './table.js'
-import {CircularProgress,Typography} from '@material-ui/core';
+import {Typography} from '@material-ui/core';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
 import CuredCard from './stats_cards/cured_card.js'

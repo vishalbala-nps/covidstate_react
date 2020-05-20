@@ -1,5 +1,4 @@
 import React from 'react';
-import {CircularProgress} from '@material-ui/core';
 import TitleBar from '../components/titlebar.js'
 import ActiveCard from '../components/state_cards/active_card.js'
 import CuredCard from '../components/state_cards/cured_card.js'

@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../components/titlebar.js'
-import {CircularProgress,Box,Card,CardContent,Typography,Link,List,ListItem,ListItemText,Divider} from '@material-ui/core';
+import {Box,Card,CardContent,Typography,Link,List,ListItem,ListItemText,Divider} from '@material-ui/core';
 import {Phone,WhatsApp,Email,Language} from '@material-ui/icons';
 import axios from 'axios'
 import apiUrl from '../components/api_url.js'
