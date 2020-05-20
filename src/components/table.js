@@ -66,6 +66,7 @@ function Statstable(props){
                     </TableHead>
                         <TableBody>
                             {tablejson.map(function(row) {
+                                let retjsx;
                                 if (row.state !== "India") {
                                     let new_cases;
                                     let new_cases_bg = "white";
@@ -91,7 +92,7 @@ function Statstable(props){
                                         new_cured_bg="green"
                                         new_cured_text="white"
                                     }
-                                    let retjsx = (
+                                    retjsx = (
                                         <TableRow key={row.state} onClick={function() {
                                             history.push("/state/"+row.state)
                                         }}>
@@ -107,8 +108,8 @@ function Statstable(props){
                                             <TableCell align="right" style={{backgroundColor:new_cured_bg,color:new_cured_text}}>{new_cured}</TableCell>
                                         </TableRow>
                                     )
-                                    return retjsx
                                 }
+                                return retjsx
                             })}
                         </TableBody>
                     </Table>
