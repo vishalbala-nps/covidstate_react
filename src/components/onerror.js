@@ -1,7 +1,9 @@
 import React from 'react';
+import {Box} from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert';
 
 function ErrorScreen() {
-    return (<h1>error</h1>)
+    return (<Alert severity="warning">An Error Occured while loading the data. Please try again soon</Alert>)
 }
 
 export default ErrorScreen;
