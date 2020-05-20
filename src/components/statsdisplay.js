@@ -12,10 +12,10 @@ import LoadingScreen from '../components/loading_screen.js'
 import ErrorScreen from '../components/onerror.js'
 
 function Statsdisplay(props){
-    if (props.statsstate.loading == true) {
+    if (props.statsstate.loading === true) {
         return (<LoadingScreen />)
     } else {
-        if (props.statsstate.error == true) {
+        if (props.statsstate.error === true) {
             return (<ErrorScreen />)
         } else {
             return (

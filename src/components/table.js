@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 
 function Statstable(props){
     const [tablejson,settablejson] = React.useReducer(function(state,action) {
-        if (action.type == "ADD_TO_TABLE") {
+        if (action.type === "ADD_TO_TABLE") {
             return createstatsrows(props.statsstate)
-        } else if (action.type == "SET_SEARCH") {
+        } else if (action.type === "SET_SEARCH") {
             return action.payload
         }
     },[])
@@ -66,7 +66,7 @@ function Statstable(props){
                     </TableHead>
                         <TableBody>
                             {tablejson.map(function(row) {
-                                if (row.state != "India") {
+                                if (row.state !== "India") {
                                     let new_cases;
                                     let new_cases_bg = "white";
                                     let new_cases_text = "black";
@@ -76,17 +76,17 @@ function Statstable(props){
                                     let new_cured;
                                     let new_cured_bg = "white";
                                     let new_cured_text = "black";
-                                    if (row.new_cases != 0) {
+                                    if (row.new_cases !== 0) {
                                         new_cases="+"+row.new_cases
                                         new_cases_bg = "purple"
                                         new_cases_text="white"
                                     }
-                                    if (row.new_deaths != 0) {
+                                    if (row.new_deaths !== 0) {
                                         new_deaths="+"+row.new_deaths
                                         new_deaths_bg="red"
                                         new_deaths_text="white"
                                     }
-                                    if (row.new_cured != 0) {
+                                    if (row.new_cured !== 0) {
                                         new_cured="+"+row.new_cured
                                         new_cured_bg="green"
                                         new_cured_text="white"

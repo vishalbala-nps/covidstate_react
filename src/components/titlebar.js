@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 function TitleBar(props) {
   const [draweropen,setdraweropen] = React.useState(false);
   let history = useHistory();
-  if (props.type == "hometitle"){
+  if (props.type === "hometitle"){
     return (
         <>
         <Drawer open={draweropen} onClose={function() {setdraweropen(false);}}>
@@ -37,7 +37,7 @@ function TitleBar(props) {
         </AppBar>
         </>
     );
-  } else if (props.type == "backbar") {
+  } else if (props.type === "backbar") {
       return (
         <AppBar position="static">
             <Toolbar>

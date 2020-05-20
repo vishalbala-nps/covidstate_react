@@ -9,9 +9,9 @@ import ErrorScreen from '../components/onerror.js'
 
 function FAQ(props) {
   const [getfaq,setfaq] = React.useReducer(function(state,action) {
-    if (action.type == "DATA_LOADED") {
+    if (action.type === "DATA_LOADED") {
       return {loading:false,error:false,faqlist:action.payload}
-    } else if (action.type == "DATA_ERROR") {
+    } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,faqlist:[]}
     } else {
       return new Error()
@@ -46,7 +46,7 @@ function FAQ(props) {
     </ExpansionPanel>
     )
   }
-  if (getfaq.loading == true) {
+  if (getfaq.loading === true) {
     return (
       <>
         <TitleBar type="backbar" title="FAQ" />
@@ -54,7 +54,7 @@ function FAQ(props) {
       </>
     )
   } else {
-    if (getfaq.error == true) {
+    if (getfaq.error === true) {
       return (
         <>
           <TitleBar type="backbar" title="FAQ" />

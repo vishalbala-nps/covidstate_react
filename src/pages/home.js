@@ -7,9 +7,9 @@ import apiUrl from '../components/api_url.js'
 
 function HomePage() {
   const [getmessages,setmessages] = React.useReducer(function(state,action) {
-    if (action.type == "DATA_LOADED") {
+    if (action.type === "DATA_LOADED") {
       return {loading:false,error:false,messageslist:action.payload}
-    } else if (action.type == "DATA_ERROR") {
+    } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,messageslist:[]}
     } else {
       return new Error()
@@ -17,9 +17,9 @@ function HomePage() {
   },{loading:true,error:false,messageslist:[]})
   
   const [getstats,setstats] = React.useReducer(function(state,action) {
-    if (action.type == "DATA_LOADED") {
+    if (action.type === "DATA_LOADED") {
       return {loading:false,error:false,stats:action.payload}
-    } else if (action.type == "DATA_ERROR") {
+    } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,stats:[]}
     } else {
       return new Error()

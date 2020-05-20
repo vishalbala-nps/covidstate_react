@@ -10,9 +10,9 @@ import ErrorScreen from '../components/onerror.js'
 function Contacts(props) {
   let contactsjsx;
   const [getcontacts,setcontacts] = React.useReducer(function(state,action) {
-    if (action.type == "DATA_LOADED") {
+    if (action.type === "DATA_LOADED") {
       return {loading:false,error:false,messageslist:action.payload}
-    } else if (action.type == "DATA_ERROR") {
+    } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,messageslist:[]}
     } else {
       return new Error()
@@ -75,10 +75,10 @@ function Contacts(props) {
         </>
       )
   }
-  if (getcontacts.loading == true) {
+  if (getcontacts.loading === true) {
     contactsjsx = (<LoadingScreen />)
   } else {
-    if (getcontacts.error == true) {
+    if (getcontacts.error === true) {
       contactsjsx = (<ErrorScreen />)
     } else {
         let contactslist = []

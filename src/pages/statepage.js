@@ -16,11 +16,11 @@ function Statepage(props) {
   let resjsx;
   const [stats,setstats] = React.useReducer(
     function(state,action) {
-      if (action.type == "DATA_LOADING") {
+      if (action.type === "DATA_LOADING") {
         return {loading:true,error:false,stats:{}}
-      } else if (action.type == "DATA_ERROR") {
+      } else if (action.type === "DATA_ERROR") {
         return {loading:false,error:true,stats:{}}
-      } else if (action.type == "DATA_LOADED") {
+      } else if (action.type === "DATA_LOADED") {
         return {loading:false,error:false,stats:action.payload}
       }
     },{loading:true,error:false,stats:{}}
@@ -37,10 +37,10 @@ function Statepage(props) {
       }) 
     })
   },[])
-  if (stats.loading == true) {
+  if (stats.loading === true) {
     resjsx = (<LoadingScreen />)
-  } else if (stats.loading == false) {
-    if (stats.error == true) {
+  } else if (stats.loading === false) {
+    if (stats.error === true) {
       resjsx = (<ErrorScreen />)
     } else {
       resjsx = (

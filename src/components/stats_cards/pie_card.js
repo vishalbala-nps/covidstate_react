@@ -70,7 +70,7 @@ function PieCard(mainprops) {
             return b["data"] - a["data"];
         });
 
-        if (props.value == 0){
+        if (props.value === 0){
             let pietotal = apievals[1]["data"]+apievals[2]["data"]+apievals[3]["data"]+apievals[4]["data"]+apievals[5]["data"]+apievals[6]["data"]+apievals[7]["data"]+apievals[8]["data"]+apievals[9]["data"]
             let piearr = [apievals[1]["data"],apievals[2]["data"],apievals[3]["data"],apievals[4]["data"],apievals[5]["data"],apievals[6]["data"],apievals[7]["data"],apievals[8]["data"],apievals[9]["data"],apievals[0]["data"]-pietotal]
             let colors = [statecolors[apievals[1]["state"]],statecolors[apievals[2]["state"]],statecolors[apievals[3]["state"]],statecolors[apievals[4]["state"]],statecolors[apievals[5]["state"]],statecolors[apievals[6]["state"]],statecolors[apievals[7]["state"]],statecolors[apievals[8]["state"]],statecolors[apievals[9]["state"]],statecolors["Others"]]
@@ -98,7 +98,7 @@ function PieCard(mainprops) {
                     }}/>
                 </div>
             )
-        } else if (props.value == 1){
+        } else if (props.value === 1){
             let pietotal = ipievals[1]["data"]+ipievals[2]["data"]+ipievals[3]["data"]+ipievals[4]["data"]+ipievals[5]["data"]+ipievals[6]["data"]+ipievals[7]["data"]+ipievals[8]["data"]+ipievals[9]["data"]
             let piearr = [ipievals[1]["data"],ipievals[2]["data"],ipievals[3]["data"],ipievals[4]["data"],ipievals[5]["data"],ipievals[6]["data"],ipievals[7]["data"],ipievals[8]["data"],ipievals[9]["data"],ipievals[0]["data"]-pietotal]
             let colors = [statecolors[ipievals[1]["state"]],statecolors[ipievals[2]["state"]],statecolors[ipievals[3]["state"]],statecolors[ipievals[4]["state"]],statecolors[ipievals[5]["state"]],statecolors[ipievals[6]["state"]],statecolors[ipievals[7]["state"]],statecolors[ipievals[8]["state"]],statecolors[ipievals[9]["state"]],statecolors["Others"]]
@@ -126,7 +126,7 @@ function PieCard(mainprops) {
                     }}/>
                 </div>
             )
-        } else if (props.value == 2){
+        } else if (props.value === 2){
             let pietotal = dpievals[1]["data"]+dpievals[2]["data"]+dpievals[3]["data"]+dpievals[4]["data"]+dpievals[5]["data"]+dpievals[6]["data"]+dpievals[7]["data"]+dpievals[8]["data"]+dpievals[9]["data"]
             let piearr = [dpievals[1]["data"],dpievals[2]["data"],dpievals[3]["data"],dpievals[4]["data"],dpievals[5]["data"],dpievals[6]["data"],dpievals[7]["data"],dpievals[8]["data"],dpievals[9]["data"],dpievals[0]["data"]-pietotal]
             let colors = [statecolors[dpievals[1]["state"]],statecolors[dpievals[2]["state"]],statecolors[dpievals[3]["state"]],statecolors[dpievals[4]["state"]],statecolors[dpievals[5]["state"]],statecolors[dpievals[6]["state"]],statecolors[dpievals[7]["state"]],statecolors[dpievals[8]["state"]],statecolors[dpievals[9]["state"]],statecolors["Others"]]
@@ -154,7 +154,7 @@ function PieCard(mainprops) {
                     }}/>
                 </div>
             )
-        } else if (props.value == 3){
+        } else if (props.value === 3){
             let pietotal = cpievals[1]["data"]+cpievals[2]["data"]+cpievals[3]["data"]+cpievals[4]["data"]+cpievals[5]["data"]+cpievals[6]["data"]+cpievals[7]["data"]+cpievals[8]["data"]+cpievals[9]["data"]
             let piearr = [cpievals[1]["data"],cpievals[2]["data"],cpievals[3]["data"],cpievals[4]["data"],cpievals[5]["data"],cpievals[6]["data"],cpievals[7]["data"],cpievals[8]["data"],cpievals[9]["data"],cpievals[0]["data"]-pietotal]
             let colors = [statecolors[cpievals[1]["state"]],statecolors[cpievals[2]["state"]],statecolors[cpievals[3]["state"]],statecolors[cpievals[4]["state"]],statecolors[cpievals[5]["state"]],statecolors[cpievals[6]["state"]],statecolors[cpievals[7]["state"]],statecolors[cpievals[8]["state"]],statecolors[cpievals[9]["state"]],statecolors["Others"]]
@@ -199,7 +199,7 @@ function PieCard(mainprops) {
     return (
         <div>
             <AppBar position="static" elevation={0}>
-                <Tabs variant="scrollable" scrollButtons="auto"value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#AE5DC9"}}>
+                <Tabs variant="scrollable" scrollButtons="auto" value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#AE5DC9"}}>
                     <Tab label="Active"/>
                     <Tab label="Infected"/>
                     <Tab label="Deaths"/>
