@@ -17,8 +17,8 @@ function MessagesDisplay(props) {
     return (
         <>
             <br />
-            <Box bgcolor="info.main" color="primary.main">
-                <Typography align="center" variant="h4">{getmessage}</Typography>
+            <Box bgcolor="#CEE3FE" color="#253883">
+                <Typography align="center" variant="h6"><b>{getmessage}</b></Typography>
             </Box>
         </>
     )
