@@ -36,7 +36,7 @@ function Statepage(props) {
         type: "DATA_ERROR"
       }) 
     })
-  },[])
+  },[state])
   if (stats.loading === true) {
     resjsx = (<LoadingScreen />)
   } else if (stats.loading === false) {

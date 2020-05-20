@@ -48,7 +48,7 @@ function HomePage() {
   return (
     <>
         <TitleBar type="hometitle" />
-        {/*<MessagesDisplay messagestate={getmessages}/>*/}
+        <MessagesDisplay messagestate={getmessages}/>
         <Statsdisplay statsstate={getstats} />
     </>
   );
