@@ -8,6 +8,7 @@ function MessagesDisplay(props) {
             setmessage("An Error Occured. Please try again soon")
         } else {
             setmessage(props.messagestate.messageslist[Math.floor(Math.random()*props.messagestate.messageslist.length)])
+            // eslint-disable-next-line
             let periodicID = setInterval(function() {
                 setmessage(props.messagestate.messageslist[Math.floor(Math.random()*props.messagestate.messageslist.length)])
             },5000)
