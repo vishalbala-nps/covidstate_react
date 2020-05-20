@@ -20,7 +20,7 @@ function ActiveCard(mainprops) {
             cdata.push(mainprops.stats["data"][key]["deaths"])
             cbdata.push(mainprops.stats["data"][key]["new_deaths"])
         }
-        if (props.value == 0){
+        if (props.value === 0){
             chartjsx = (
                 <div>
                     <Line data={
@@ -49,7 +49,7 @@ function ActiveCard(mainprops) {
                     }}/>
                 </div>
             )
-        }  else if (props.value == 1){
+        }  else if (props.value === 1){
             chartjsx = (
                 <div>
                     <Bar data={{

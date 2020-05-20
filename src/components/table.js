@@ -91,7 +91,7 @@ function Statstable(props){
                                         new_cured_bg="green"
                                         new_cured_text="white"
                                     }
-                                    return (
+                                    let retjsx = (
                                         <TableRow key={row.state} onClick={function() {
                                             history.push("/state/"+row.state)
                                         }}>
@@ -107,6 +107,7 @@ function Statstable(props){
                                             <TableCell align="right" style={{backgroundColor:new_cured_bg,color:new_cured_text}}>{new_cured}</TableCell>
                                         </TableRow>
                                     )
+                                    return retjsx
                                 }
                             })}
                         </TableBody>

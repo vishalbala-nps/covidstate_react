@@ -20,7 +20,7 @@ function InfectedCard(mainprops) {
             cdata.push(mainprops.stats["data"][key]["India"]["total"])
             cbdata.push(mainprops.stats["data"][key]["India"]["new_cases"])
         }
-        if (props.value == 0){
+        if (props.value === 0){
             chartjsx = (
                 <div>
                     <Line data={
@@ -49,7 +49,7 @@ function InfectedCard(mainprops) {
                     }} />
                 </div>
             )
-        } else if (props.value == 1){
+        } else if (props.value === 1){
             chartjsx = (
                 <div>
                     <Bar data={{

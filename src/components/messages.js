@@ -3,8 +3,8 @@ import { Typography,Box } from '@material-ui/core';
 
 function MessagesDisplay(props) {
     const [getmessage,setmessage] = React.useState("Loading..")
-    if (props.messagestate.loading == false && getmessage == "Loading..") {
-        if (props.messagestate.error == true) {
+    if (props.messagestate.loading === false && getmessage === "Loading..") {
+        if (props.messagestate.error === true) {
             setmessage("An Error Occured. Please try again soon")
         } else {
             setmessage(props.messagestate.messageslist[Math.floor(Math.random()*props.messagestate.messageslist.length)])

@@ -18,7 +18,7 @@ function ActiveCard(mainprops) {
             labels.push(key)
             cdata.push(mainprops.stats["data"][key]["India"]["active_cases"])
         }
-        if (props.value == 0){
+        if (props.value === 0){
             chartjsx = (
                 <div>
                     <Line data={

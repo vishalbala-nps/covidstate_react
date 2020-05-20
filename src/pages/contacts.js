@@ -35,21 +35,21 @@ function Contacts(props) {
       let websitejsx;
       let emailjsx;
       let wajsx;
-      if (props.contactjson.contacts["website"] != null) {
+      if (props.contactjson.contacts["website"] !== null) {
         websitejsx = (
             <ListItem button component="a" href={props.contactjson.contacts["website"]}>
               <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Language /> {props.contactjson.contacts["website"]}</Typography>}></ListItemText>
             </ListItem>
         )
       }
-      if (props.contactjson.contacts["email"] != null) {
+      if (props.contactjson.contacts["email"] !== null) {
         emailjsx = (
             <ListItem button component="a" href={"mailto:"+props.contactjson.contacts["email"]}>
               <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Email /> {props.contactjson.contacts["email"]}</Typography>}></ListItemText>
             </ListItem>
         )
       }
-      if (props.contactjson.contacts["whatsapp"] != null) {
+      if (props.contactjson.contacts["whatsapp"] !== null) {
         wajsx = (
             <ListItem button component="a" href={"wa.me/"+props.contactjson.contacts["whatsapp"]}>
               <ListItemText primary={<Typography style={{color:"#4B48B7"}}><WhatsApp /> {props.contactjson.contacts["whatsapp"]}</Typography>}></ListItemText>
@@ -84,7 +84,7 @@ function Contacts(props) {
         let contactslist = []
         for (let key in getcontacts.messageslist) {
           if (getcontacts.messageslist.hasOwnProperty(key)) {
-            if (key != "India") {
+            if (key !== "India") {
               contactslist.push({state:key,contacts:getcontacts.messageslist[key]})
             }
           }
