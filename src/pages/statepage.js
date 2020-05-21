@@ -51,10 +51,10 @@ function Statepage(props) {
                 <InfectedCard stats={stats.stats} state={state}/>
               </Grid>
               <Grid item md={6}>
-                <CuredCard stats={stats.stats} state={state}/>
+                <DeathsCard stats={stats.stats} state={state}/>
               </Grid>
               <Grid item md={6}>
-                <DeathsCard stats={stats.stats} state={state}/>
+                <CuredCard stats={stats.stats} state={state}/>
               </Grid>
               <Grid item md={6}>
                 <ActiveCard stats={stats.stats} state={state}/>
