@@ -1,15 +1,25 @@
 import React from 'react';
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container,TextField} from '@material-ui/core';
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Container,TextField,TableSortLabel} from '@material-ui/core';
 import { useHistory } from "react-router-dom";
-
+import sortarray from 'sort-array'
+import HeightIcon from '@material-ui/icons/Height';
 function Statstable(props){
     const [tablejson,settablejson] = React.useReducer(function(state,action) {
         if (action.type === "ADD_TO_TABLE") {
             return createstatsrows(props.statsstate)
         } else if (action.type === "SET_SEARCH") {
             return action.payload
+        } else if (action.type === "SORT_DATA") {
+            let cstate = []
+            cstate = sortarray(state,{
+                by: action.payload.key,
+                order: action.payload.order
+            })
+            console.log(cstate)
+            return [...cstate]
         }
     },[])
+    const [sort,setsort] = React.useState({row:"active_cases",order:"desc"})
     let history = useHistory();
     function createstatsrows(statsjson) {
         let tstamp = statsjson["timestamp"]
@@ -28,8 +38,46 @@ function Statstable(props){
                 tablelist.push({state,active_cases,total,new_cases,deaths,new_deaths,cured,new_cured})
             }
         }
+        sortarray(tablelist,{
+            by: "active_cases",
+            order: "desc"
+        })
         return tablelist
     }
+    function sorttable(row) {
+        if (sort.row === row) {
+            console.log("in if")
+            if (sort.order === "desc") {
+                settablejson({
+                    type: "SORT_DATA",
+                    payload: {
+                        key: row,
+                        order: "asc"
+                    }
+                })
+                setsort({row:row,order:"asc"})
+            } else {
+                settablejson({
+                    type: "SORT_DATA",
+                    payload: {
+                        key: row,
+                        order: "desc"
+                    }
+                })
+                setsort({row:row,order:"desc"})
+            }
+        } else {
+            setsort({row:row,order:"desc"})
+            settablejson({
+                type: "SORT_DATA",
+                payload: {
+                    key: row,
+                    order: "desc"
+                }
+            })  
+        }
+    }
+
     React.useEffect(function() {
         settablejson({
             type: "ADD_TO_TABLE"
@@ -52,16 +100,16 @@ function Statstable(props){
                 <br/><br/>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
-                    <TableHead style={{backgroundColor:"black"}}>
+                    <TableHead>
                         <TableRow>
-                            <TableCell style={{color:"white"}}>State</TableCell>
-                            <TableCell style={{color:"white"}} align="right">Active Patients</TableCell>
-                            <TableCell style={{color:"white"}} align="right">Infected People </TableCell>
-                            <TableCell style={{color:"white"}} align="right">New Patients</TableCell>
-                            <TableCell style={{color:"white"}} align="right">Total Deaths</TableCell>
-                            <TableCell style={{color:"white"}} align="right">New Deaths</TableCell>
-                            <TableCell style={{color:"white"}} align="right">Cured</TableCell>
-                            <TableCell style={{color:"white"}} align="right">New Cured</TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("state")}}><b>State</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("active_cases")}}><b>Active Patients</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("total")}}><b>Infected People</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cases")}}><b>New Patients</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("deaths")}}><b>Total Deaths</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_deaths")}}><b>New Deaths</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("cured")}}><b>Cured</b></TableSortLabel></TableCell>
+                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cured")}}><b>New Cured</b></TableSortLabel></TableCell>
                         </TableRow>
                     </TableHead>
                         <TableBody>
