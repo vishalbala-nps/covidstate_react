@@ -4,6 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PhoneIcon from '@material-ui/icons/Phone';
 import InfoIcon from '@material-ui/icons/Info';
+import CodeIcon from '@material-ui/icons/Code';
 import { useHistory } from "react-router-dom";
 
 function TitleBar(props) {
@@ -24,6 +25,10 @@ function TitleBar(props) {
                 <ListItem button key="faq" onClick={function() {setdraweropen(false);history.push("/faq")}}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary="FAQ" />
+                </ListItem>
+                <ListItem button key="api" component="a" href="http://covidstate.in/api/docs">
+                    <ListItemIcon><CodeIcon /></ListItemIcon>
+                    <ListItemText primary="API" />
                 </ListItem>
             </List>
         </Drawer>
