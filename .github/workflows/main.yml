@@ -19,6 +19,7 @@ jobs:
         path: ./covidstate_react.tar
   test:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Download Docker Image
         uses: actions/download-artifact@v1
