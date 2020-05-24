@@ -25,9 +25,8 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: docker_react
-          path: ./covidstate_react.tar
       - name: Load Docker Image
-        run: docker load --input covidstate_react.tar
+        run: docker load --input ./docker_react/covidstate_react.tar
       - name: Start Docker Container
         run: docker run -p 8080:80 -d covidstate_react
       - name: Run Tests
