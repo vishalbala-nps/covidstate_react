@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Docker Image
-      run: docker build . -t covidstate_react
+      run: npm run build-docker
     - name: Save Docker Image
       run: docker save -o covidstate_react.tar covidstate_react
     - name: Upload Docker Image
