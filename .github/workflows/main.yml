@@ -1,0 +1,19 @@
+name: Build Docker Image
+on:
+  push:
+    branches: [ deploy ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Docker Image
+      run: docker build . -t covidstate_react
+    - name: Save Docker Image
+      run: docker save -o covidstate_react.tar covidstate_react
+    - name: Upload Docker Image
+      uses: actions/upload-artifact@v1
+      with:
+        name: docker_react
+        path: ./covidstate_react.tar
