@@ -17,6 +17,11 @@ jobs:
       with:
         name: docker_react
         path: ./covidstate_react.tar
+    - name: Upload Tests
+      uses: actions/upload-artifact@v1
+      with:
+        name: docker_tests
+        path: ./docker_tests/test-web.py
   test:
     runs-on: ubuntu-latest
     needs: build
@@ -25,9 +30,13 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: docker_react
+      - name: Download Tests
+        uses: actions/download-artifact@v1
+        with:
+          name: docker_tests
       - name: Load Docker Image
         run: docker load --input ./docker_react/covidstate_react.tar
       - name: Start Docker Container
         run: docker run -p 8080:80 -d covidstate_react
       - name: Run Tests
-        run: ls
+        run: python3 docker_tests/test-web.py
