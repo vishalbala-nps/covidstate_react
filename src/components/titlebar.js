@@ -9,7 +9,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-
+import GitHubIcon from '@material-ui/icons/GitHub';
 import { useHistory } from "react-router-dom";
 
 function TitleBar(props) {
@@ -68,6 +68,10 @@ function TitleBar(props) {
                 <ListItem button key="share" onClick={function() {setdraweropen(false);setsharedialog(true)}}>
                     <ListItemIcon><ShareIcon /></ListItemIcon>
                     <ListItemText primary="Share" />
+                </ListItem>
+                <ListItem button key="github" component="a" href="https://github.com/vishalbala-nps/covidstate_react">
+                    <ListItemIcon><GitHubIcon /></ListItemIcon>
+                    <ListItemText primary="View Github Repository" />
                 </ListItem>
             </List>
         </Drawer>

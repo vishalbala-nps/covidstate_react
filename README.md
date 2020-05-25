@@ -1,7 +1,7 @@
 
 # covidstate_react
 
-React Web UI for covidstate.in.
+React Web UI for covidstate.in (http://covidstate.in)
 
 ## Prerequisites
 - Node.js and NPM Installed
@@ -12,4 +12,4 @@ React Web UI for covidstate.in.
 - Install all the required dependencies and start the server by running: `npm install && npm start`
 ## Building production Docker image
 - Run the command: `npm run build-docker`. This will build the production Docker Image
-- Start the Container by running `docker run -p 81:80 covidstate_react`. The web server will be accessible on the port 81
+- Start the Container by running `docker run -p 8081:8081 covidstate_react`. The web server will be accessible on the port 8081
