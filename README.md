@@ -1,5 +1,6 @@
 
 # covidstate_react
+![Build and Test Docker Image](https://github.com/vishalbala-nps/covidstate_react/workflows/Build%20and%20Test%20Docker%20Image/badge.svg)
 
 React Web UI for covidstate.in (http://covidstate.in)
 
