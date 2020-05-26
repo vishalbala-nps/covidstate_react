@@ -22,7 +22,7 @@ function TitleBar(props) {
         <Dialog open={sharedialog} onClose={function(){setsharedialog(false)}}>
             <DialogTitle>Share covidstate.in</DialogTitle>
             <List>
-                <ListItem button key={"whatsapp"} component="a" href="https://wa.me/?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:http://covidstate.in">
+                <ListItem button key={"whatsapp"} component="a" href="https://wa.me/?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:https://covidstate.in">
                     <ListItemAvatar>
                         <Avatar>
                             <WhatsAppIcon />
@@ -30,7 +30,7 @@ function TitleBar(props) {
                     </ListItemAvatar>
                     <ListItemText primary="Whatsapp"/>
                 </ListItem>
-                <ListItem button key={"twitter"} component="a" href="https://twitter.com/intent/tweet?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:http://covidstate.in">
+                <ListItem button key={"twitter"} component="a" href="https://twitter.com/intent/tweet?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:https://covidstate.in">
                     <ListItemAvatar>
                         <Avatar>
                             <TwitterIcon />
@@ -38,7 +38,7 @@ function TitleBar(props) {
                     </ListItemAvatar>
                     <ListItemText primary="Twitter"/>
                 </ListItem>
-                <ListItem button key={"facebook"} component="a" href="http://www.facebook.com/sharer/sharer.php?u=http://covidstate.in">
+                <ListItem button key={"facebook"} component="a" href="https://www.facebook.com/sharer/sharer.php?u=https://covidstate.in">
                     <ListItemAvatar>
                         <Avatar>
                             <FacebookIcon />
@@ -61,7 +61,7 @@ function TitleBar(props) {
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary="FAQ" />
                 </ListItem>
-                <ListItem button key="api" component="a" href="http://covidstate.in/api/docs">
+                <ListItem button key="api" component="a" href="https://covidstate.in/api/docs">
                     <ListItemIcon><CodeIcon /></ListItemIcon>
                     <ListItemText primary="API" />
                 </ListItem>

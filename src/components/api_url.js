@@ -1,2 +1,2 @@
-let apiUrl = "http://covidstate.in/api/v1"
+let apiUrl = "https://covidstate.in/api/v1"
 export default apiUrl;
