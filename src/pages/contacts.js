@@ -39,7 +39,7 @@ function Contacts(props) {
       let wajsx;
       if (props.contactjson.contacts["website"] !== null) {
         websitejsx = (
-            <ListItem button component="a" href={props.contactjson.contacts["website"]}>
+            <ListItem button component="a" href={props.contactjson.contacts["website"]} target="_blank">
               <ListItemText primary={<Typography style={{color:"#4B48B7"}}><Language /> {props.contactjson.contacts["website"]}</Typography>}></ListItemText>
             </ListItem>
         )
@@ -53,7 +53,7 @@ function Contacts(props) {
       }
       if (props.contactjson.contacts["whatsapp"] !== null) {
         wajsx = (
-            <ListItem button component="a" href={"wa.me/"+props.contactjson.contacts["whatsapp"]}>
+            <ListItem button component="a" href={"wa.me/"+props.contactjson.contacts["whatsapp"]} target="_blank">
               <ListItemText primary={<Typography style={{color:"#4B48B7"}}><WhatsApp /> {props.contactjson.contacts["whatsapp"]}</Typography>}></ListItemText>
             </ListItem>
         )
@@ -77,6 +77,9 @@ function Contacts(props) {
         </>
       )
   }
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   if (getcontacts.loading === true) {
     contactsjsx = (<LoadingScreen />)
   } else {
@@ -93,7 +96,7 @@ function Contacts(props) {
         }
         const curcontact = contactslist
         contactslist = curcontact.filter(function(state) {
-          return state["state"].includes(getsearch)
+          return state["state"].includes(capitalizeFirstLetter(getsearch))
         })
         contactsjsx = (
           <Box m={1}>
@@ -103,9 +106,9 @@ function Contacts(props) {
                 <Typography variant="h4" align="center">National Contacts</Typography>
                 <br />
                 <Typography variant="h6"><Phone style={{color:"#4B48B7"}}/> <Link href={"tel:"+getcontacts.messageslist["India"]["phone"]}>{getcontacts.messageslist["India"]["phone"]}</Link></Typography>
-                <Typography variant="h6"><WhatsApp style={{color:"#4B48B7"}}/> <Link href={"http://wa.me/"+getcontacts.messageslist["India"]["whatsapp"]}>{getcontacts.messageslist["India"]["whatsapp"]}</Link></Typography>
+                <Typography variant="h6"><WhatsApp style={{color:"#4B48B7"}}/> <Link href={"http://wa.me/"+getcontacts.messageslist["India"]["whatsapp"]} target="_blank">{getcontacts.messageslist["India"]["whatsapp"]}</Link></Typography>
                 <Typography variant="h6"><Email style={{color:"#4B48B7"}}/> <Link href={"mailto:"+getcontacts.messageslist["India"]["email"]}>{getcontacts.messageslist["India"]["email"]}</Link></Typography>
-                <Typography variant="h6"><Language style={{color:"#4B48B7"}}/> <Link href={getcontacts.messageslist["India"]["website"]}>{getcontacts.messageslist["India"]["website"]}</Link></Typography>
+                <Typography variant="h6"><Language style={{color:"#4B48B7"}}/> <Link href={getcontacts.messageslist["India"]["website"]} target="_blank">{getcontacts.messageslist["India"]["website"]}</Link></Typography>
               </CardContent>
             </Card>
             <br />

@@ -21,6 +21,9 @@ function Statstable(props){
     },[])
     const [sort,setsort] = React.useState({row:"active_cases",order:"desc"})
     let history = useHistory();
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     function createstatsrows(statsjson) {
         let tstamp = statsjson["timestamp"]
         let statslist = statsjson["data"][tstamp["latest_updated_date"]]
@@ -90,7 +93,7 @@ function Statstable(props){
                 <TextField label="Filter by states" variant="filled" style={{width:"100%"}} onChange={function(event) {
                     let curlist = createstatsrows(props.statsstate)
                     let searched = curlist.filter(function(state) {
-                        return state["state"].includes(event.target.value)
+                        return state["state"].includes(capitalizeFirstLetter(event.target.value))
                     })
                     settablejson({
                         type: "SET_SEARCH",
@@ -141,7 +144,7 @@ function Statstable(props){
                                         new_cured_text="white"
                                     }
                                     retjsx = (
-                                        <TableRow key={row.state} onClick={function() {
+                                        <TableRow hover key={row.state} onClick={function() {
                                             history.push("/state/"+row.state)
                                         }}>
                                             <TableCell component="th" scope="row">
