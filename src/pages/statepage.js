@@ -25,6 +25,7 @@ function Statepage(props) {
       }
     },{loading:true,error:false,stats:{}}
   )
+  //Functions
   React.useEffect(function() {
     axios.get(apiUrl+"/data?type=historical&state="+state).then(function(result) {
       setstats({
@@ -67,7 +68,24 @@ function Statepage(props) {
   }
   return (
     <>
-      <TitleBar type="backbar" title={state} />
+      <TitleBar type="backbar" title={state} clickfunc={function() {
+        if (stats.loading === false) {
+          setstats({
+            type: "DATA_LOADING"
+          })
+          axios.get(apiUrl+"/data?type=historical&state="+state).then(function(result) {
+            setstats({
+              type: "DATA_LOADED",
+              payload: result.data
+            })
+          }).catch(function() {
+            setstats({
+              type: "DATA_ERROR"
+            }) 
+          })
+        }
+      }
+    } />
       {resjsx}
     </>
   )

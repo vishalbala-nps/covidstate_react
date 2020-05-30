@@ -132,10 +132,12 @@ function Contacts(props) {
   return (
     <>
       <TitleBar type="backbar" title="Contacts" clickfunc={function() {
-        setcontacts({
-          type: "DATA_LOADING"
-        })
-        getdata()
+        if (getcontacts.loading === false) {
+          setcontacts({
+            type: "DATA_LOADING"
+          })
+          getdata()
+        }
       }} />
       {contactsjsx}
     </>

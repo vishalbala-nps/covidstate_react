@@ -71,10 +71,12 @@ function FAQ(props) {
       return (
         <>
           <TitleBar type="backbar" title="FAQ" clickfunc={function() {
-            setfaq({
-              type: "DATA_LOADING"
-            })
-            getdata()
+            if (getfaq.loading === false) {
+              setfaq({
+                type: "DATA_LOADING"
+              })
+              getdata()
+            }
           }}/>
           {getfaq.faqlist.map(function(item,index) {
             return (<Addfaq faq={item} faqindex={index} key={index}/>)
