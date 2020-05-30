@@ -25,24 +25,24 @@ function TitleBar(props) {
             <List>
                 <ListItem button key={"whatsapp"} component="a" href="https://wa.me/?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:https://covidstate.in">
                     <ListItemAvatar>
-                        <Avatar>
-                            <WhatsAppIcon />
+                        <Avatar style={{backgroundColor:"#FFFFFF"}}>
+                            <WhatsAppIcon style={{color:"#25D366"}} />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Whatsapp"/>
                 </ListItem>
                 <ListItem button key={"twitter"} component="a" href="https://twitter.com/intent/tweet?text=Here%20is%20a%20website%20giving%20latest%20and%20trending%20details%20of%20COVID-19%20in%20India%20and%20it%27s%20states.%20You%20can%20visit%20it%20at:https://covidstate.in">
                     <ListItemAvatar>
-                        <Avatar>
-                            <TwitterIcon />
+                        <Avatar style={{backgroundColor:"#FFFFFF"}}>
+                            <TwitterIcon style={{color:"#1DA1F2"}} />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Twitter"/>
                 </ListItem>
                 <ListItem button key={"facebook"} component="a" href="https://www.facebook.com/sharer/sharer.php?u=https://covidstate.in">
                     <ListItemAvatar>
-                        <Avatar>
-                            <FacebookIcon />
+                        <Avatar style={{backgroundColor:"#FFFFFF"}}>
+                            <FacebookIcon style={{color:"#3b5998"}}/>
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Facebook"/>
