@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar,Toolbar,Typography,IconButton,ListItem,List,Drawer,ListItemIcon,ListItemText,Dialog,DialogTitle,ListItemAvatar,Avatar} from '@material-ui/core'
+import {AppBar,Toolbar,Typography,IconButton,ListItem,List,Drawer,ListItemIcon,ListItemText,Dialog,DialogTitle,ListItemAvatar,Avatar,Tooltip} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -10,6 +10,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import { useHistory } from "react-router-dom";
 
 function TitleBar(props) {
@@ -81,6 +82,11 @@ function TitleBar(props) {
                     setdraweropen(true);
                 }}><MenuIcon /></IconButton>
                 <Typography variant="h6" color="inherit">COVID-19 India Statistics</Typography>
+                <Tooltip title="Refresh">
+                    <IconButton color="inherit" style={{marginLeft: "auto",marginRight: -12}} onClick={props.clickfunc}>
+                        <RefreshIcon />
+                    </IconButton>
+                </Tooltip>
             </Toolbar>
         </AppBar>
         </>
@@ -93,6 +99,11 @@ function TitleBar(props) {
                     history.push("/")
                 }}><ArrowBackIcon /></IconButton>
                 <Typography variant="h6" color="inherit">{props.title}</Typography>
+                <Tooltip title="Refresh">
+                    <IconButton color="inherit" style={{marginLeft: "auto",marginRight: -12}} onClick={props.clickfunc}>
+                        <RefreshIcon />
+                    </IconButton>
+                </Tooltip>
             </Toolbar>
         </AppBar>
       )

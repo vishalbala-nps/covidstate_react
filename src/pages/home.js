@@ -11,11 +11,14 @@ function HomePage() {
       return {loading:false,error:false,stats:action.payload}
     } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,stats:[]}
+    } else if (action.type === "DATA_LOADING") {
+      return {loading:true,error:false,stats:[]}
     } else {
       return new Error()
     }
   },{loading:true,error:false,stats:[]})
-  React.useEffect(function() {
+  //Functions
+  function getdata() {
     axios.get(apiUrl+"/data?type=historical").then(function(result){
       setstats({
         type: "DATA_LOADED",
@@ -26,10 +29,20 @@ function HomePage() {
         type: "DATA_ERROR"
       })  
     })
+  }
+  React.useEffect(function() {
+    getdata()
   },[])
   return (
     <>
-        <TitleBar type="hometitle" />
+        <TitleBar type="hometitle" clickfunc={function() {
+          if (getstats.loading === false) {
+            setstats({
+              type: "DATA_LOADING"
+            })
+            getdata()
+        }
+        }}/>
         <MessagesDisplay/>
         <Statsdisplay statsstate={getstats} />
     </>
