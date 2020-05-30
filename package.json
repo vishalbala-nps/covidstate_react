@@ -12,13 +12,10 @@
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
-    "material-table": "^1.57.2",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
-    "react-charts": "^2.0.0-beta.6",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-router-transition": "^2.0.0",
     "react-scripts": "3.4.1",
     "sort-array": "^4.1.1"
   },
@@ -36,7 +33,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie >= 9"
     ],
     "development": [
       "last 1 chrome version",

@@ -13,11 +13,14 @@ function FAQ(props) {
       return {loading:false,error:false,faqlist:action.payload}
     } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,faqlist:[]}
+    } else if (action.type === "DATA_LOADING") {
+      return {loading:true,error:false,messageslist:[]}
     } else {
       return new Error()
     }
   },{loading:true,error:false,faqlist:[]})
-  React.useEffect(function() {
+  //Functions
+  function getdata() {
     axios.get(apiUrl+"/faqs").then(function(result) {
       setfaq({
         type: "DATA_LOADED",
@@ -28,6 +31,9 @@ function FAQ(props) {
         type: "DATA_ERROR"
       }) 
     })
+  }
+  React.useEffect(function() {
+    getdata()
   },[])
   //Functions
   function Addfaq(props) {
@@ -64,7 +70,14 @@ function FAQ(props) {
     } else {
       return (
         <>
-          <TitleBar type="backbar" title="FAQ" />
+          <TitleBar type="backbar" title="FAQ" clickfunc={function() {
+            if (getfaq.loading === false) {
+              setfaq({
+                type: "DATA_LOADING"
+              })
+              getdata()
+            }
+          }}/>
           {getfaq.faqlist.map(function(item,index) {
             return (<Addfaq faq={item} faqindex={index} key={index}/>)
           })}

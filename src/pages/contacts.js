@@ -14,13 +14,15 @@ function Contacts(props) {
       return {loading:false,error:false,messageslist:action.payload}
     } else if (action.type === "DATA_ERROR") {
       return {loading:false,error:true,messageslist:[]}
+    } else if (action.type === "DATA_LOADING") {
+      return {loading:true,error:false,messageslist:[]}
     } else {
       return new Error()
     }
   },{loading:true,error:false,messageslist:[]})
   const [getsearch,setsearch] = React.useState("")
-
-  React.useEffect(function() {
+  //Functions
+  function getdata() {
     axios.get(apiUrl+"/contacts").then(function(result) {
       setcontacts({
         type: "DATA_LOADED",
@@ -31,6 +33,9 @@ function Contacts(props) {
         type: "DATA_ERROR"
       }) 
     })
+  }
+  React.useEffect(function() {
+    getdata()
   },[])
   //Functions
   function Createlist(props) {
@@ -126,7 +131,14 @@ function Contacts(props) {
   }
   return (
     <>
-      <TitleBar type="backbar" title="Contacts" />
+      <TitleBar type="backbar" title="Contacts" clickfunc={function() {
+        if (getcontacts.loading === false) {
+          setcontacts({
+            type: "DATA_LOADING"
+          })
+          getdata()
+        }
+      }} />
       {contactsjsx}
     </>
   )
