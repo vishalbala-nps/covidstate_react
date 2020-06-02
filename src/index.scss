@@ -25,7 +25,7 @@ body.light-mode  {
   .infectedcardtab {
     background-color: #AE5DC9;
   }
-  .infectedcardchart {
+  .cardchart {
     background-color: #ffffff;
     color: #000000;
   }
@@ -36,20 +36,12 @@ body.light-mode  {
   .deathcardtab {
     background-color: #FD2D2D;
   }
-  .deathcardchart {
-    background-color: #ffffff;
-    color: #000000;
-  }
   .curedcard {
     border-color: #ffffff;
     border-style: none;
   }
   .curedcardtab {
     background-color: #00CB58;
-  }
-  .curedcardchart {
-    background-color: #ffffff;
-    color: #000000;
   }
   .activecard {
     border-color: #ffffff;
@@ -58,10 +50,6 @@ body.light-mode  {
   .activecardtab {
     background-color: #FFBB33;
   }
-  .activedcardchart {
-    background-color: #ffffff;
-    color: #000000;
-  }
   .piecard {
     border-color: #ffffff;
     border-style: none;
@@ -69,9 +57,9 @@ body.light-mode  {
   .piecardtab {
     background-color: #AE5DC9;
   }
-  .piecardchart {
+  .cardchart {
     background-color: #ffffff;
-    color: #1b2938;
+    color: #000000;
   }
 }
 body.dark-mode {
@@ -87,20 +75,12 @@ body.dark-mode {
   .infectedcardtab {
     background-color: #1b2938;
   }
-  .infectedcardchart {
-    background-color: #1b2938;
-    color: #ffffff;
-  }
   .deathcard {
     border-color: #FD2D2D;
     border-style: solid;
   }
   .deathcardtab {
     background-color: #1b2938;
-  }
-  .deathcardchart {
-    background-color: #1b2938;
-    color: #ffffff;
   }
   .curedcard {
     border-color: #00CB58;
@@ -109,20 +89,12 @@ body.dark-mode {
   .curedcardtab {
     background-color: #1b2938;
   }
-  .curedcardchart {
-    background-color: #1b2938;
-    color: #ffffff;
-  }
   .activecard {
     border-color: #FFBB33;
     border-style: solid;
   }
   .activecardtab {
     background-color: #1b2938;
-  }
-  .activecardchart {
-    background-color: #1b2938;
-    color: #ffffff;
   }
   .piecard {
     border-color: #AE5DC9;
@@ -131,7 +103,7 @@ body.dark-mode {
   .piecardtab {
     background-color: #1b2938;
   }
-  .piecardchart {
+  .cardchart {
     background-color: #1b2938;
     color: #ffffff;
   }

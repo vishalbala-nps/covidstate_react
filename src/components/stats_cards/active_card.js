@@ -49,7 +49,7 @@ function ActiveCard(mainprops) {
             )
         } 
         return (
-            <Card className="activecardchart">
+            <Card className="cardchart">
                 <CardContent>
                     <Typography variant="h4" align="center">Active Patients</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["active_cases"]}</Typography>

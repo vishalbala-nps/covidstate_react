@@ -69,7 +69,7 @@ function InfectedCard(mainprops) {
             )
         }
         return (
-            <Card className="infectedcardchart" >
+            <Card className="cardchart" >
                 <CardContent>
                     <Typography variant="h4" align="center">Infected</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["total"]} <small style={{color:"#AE5DC9"}}>(+{mainprops.stats["data"][tstamp]["India"]["new_cases"]})</small></Typography>

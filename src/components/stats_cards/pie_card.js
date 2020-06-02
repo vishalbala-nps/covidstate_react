@@ -184,7 +184,7 @@ function PieCard(mainprops) {
             )
         }
         return (
-            <Card className="piecardchart">
+            <Card className="cardchart">
                 <CardContent>
                     <Typography variant="h5" align="center">Statewise Pie Charts</Typography>
                     {chartjsx}
