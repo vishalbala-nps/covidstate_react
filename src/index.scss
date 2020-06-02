@@ -73,6 +73,12 @@ body.light-mode  {
     background-color: #ffffff;
     color: #000000;
   }
+  .messages {
+    color: #253883;
+    background-color: #CEE3FE;
+    border-color: #000000;
+    border-style: none;
+  }
 }
 body.dark-mode {
   background-color: #10171d;
@@ -133,6 +139,12 @@ body.dark-mode {
   .natcontacts {
     background-color: #1b2938;
     color: #ffffff;
+  }
+  .messages {
+    color: #CEE3FE;
+    background-color: #10171d;
+    border-color: #253883;
+    border-style: solid;
   }
 }
 

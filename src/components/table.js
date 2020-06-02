@@ -90,7 +90,7 @@ function Statstable(props){
         <>
             <br />
             <Container maxWidth="lg">
-                <TextField label="Filter by states" variant="filled" style={{width:"100%"}} onChange={function(event) {
+                <TextField InputProps={{style:{backgroundColor: "#E8E8E8"}}} style={{width:"100%"}} label="Filter by states" variant="filled" onChange={function(event) {
                     let curlist = createstatsrows(props.statsstate)
                     let searched = curlist.filter(function(state) {
                         return state["state"].includes(capitalizeFirstLetter(event.target.value))
