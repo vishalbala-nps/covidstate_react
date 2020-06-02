@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body.light-mode  {
+  background-color: #fff;
+  color: #333;
+  .navstyle {
+    background-color: #346DCE;
+  }
+  .infectedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .infectedcardtab {
+    background-color: #AE5DC9;
+  }
+  .cardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .deathcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .deathcardtab {
+    background-color: #FD2D2D;
+  }
+  .curedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .curedcardtab {
+    background-color: #00CB58;
+  }
+  .activecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .activecardtab {
+    background-color: #FFBB33;
+  }
+  .piecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .piecardtab {
+    background-color: #AE5DC9;
+  }
+  .cardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .statstable {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .faqs {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .natcontacts {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .messages {
+    color: #253883;
+    background-color: #CEE3FE;
+    border-color: #000000;
+    border-style: none;
+  }
+}
+body.dark-mode {
+  background-color: #10171d;
+  color: #dfdfdf;
+  .navstyle {
+    background-color: #1b2938;
+  }
+  .infectedcard {
+    border-color: #AE5DC9;
+    border-style: solid;
+  }
+  .infectedcardtab {
+    background-color: #1b2938;
+  }
+  .deathcard {
+    border-color: #FD2D2D;
+    border-style: solid;
+  }
+  .deathcardtab {
+    background-color: #1b2938;
+  }
+  .curedcard {
+    border-color: #00CB58;
+    border-style: solid;
+  }
+  .curedcardtab {
+    background-color: #1b2938;
+  }
+  .activecard {
+    border-color: #FFBB33;
+    border-style: solid;
+  }
+  .activecardtab {
+    background-color: #1b2938;
+  }
+  .piecard {
+    border-color: #AE5DC9;
+    border-style: solid;
+  }
+  .piecardtab {
+    background-color: #1b2938;
+  }
+  .cardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .statstable {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .statstabletext {
+    color: #ffffff;
+  }
+  .faqs {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .natcontacts {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .messages {
+    color: #CEE3FE;
+    background-color: #10171d;
+    border-color: #253883;
+    border-style: solid;
+  }
+}
+

@@ -106,7 +106,7 @@ function Contacts(props) {
         contactsjsx = (
           <Box m={1}>
             <br />
-            <Card>
+            <Card className="natcontacts">
               <CardContent>
                 <Typography variant="h4" align="center">National Contacts</Typography>
                 <br />
@@ -117,10 +117,11 @@ function Contacts(props) {
               </CardContent>
             </Card>
             <br />
-            <TextField label="Filter by states" variant="filled" style={{width:"100%"}} onChange={function(event) {
+            <TextField InputProps={{style:{backgroundColor: "#E8E8E8"}}} style={{width:"100%"}} label="Filter by states" variant="filled" onChange={function(event) {
               setsearch(event.target.value)
             }} />
-            <List>
+            <br />
+            <List className="natcontacts">
               {contactslist.map(function(item,index) {
                 return (<Createlist contactjson={item} key={index}/>)
               })}

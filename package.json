@@ -12,12 +12,14 @@
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "sort-array": "^4.1.1"
+    "sort-array": "^4.1.1",
+    "use-dark-mode": "^2.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

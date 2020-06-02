@@ -69,7 +69,7 @@ function InfectedCard(mainprops) {
             )
         }
         return (
-            <Card>
+            <Card className="cardchart" >
                 <CardContent>
                     <Typography variant="h4" align="center">Infected</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["total"]} <small style={{color:"#AE5DC9"}}>(+{mainprops.stats["data"][tstamp]["India"]["new_cases"]})</small></Typography>
@@ -81,9 +81,9 @@ function InfectedCard(mainprops) {
     }
     
     return (
-        <div>
+        <div className="infectedcard">
             <AppBar position="static" elevation={0}>
-                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#AE5DC9"}}>
+                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="infectedcardtab">
                     <Tab label="Cumulative"/>
                     <Tab label="Daily"/>
                 </Tabs>

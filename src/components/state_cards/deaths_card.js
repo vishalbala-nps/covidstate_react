@@ -77,7 +77,7 @@ function ActiveCard(mainprops) {
             )
         }
         return (
-            <Card>
+            <Card className="cardchart">
                 <CardContent>
                     <Typography variant="h4" align="center">Deaths</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["deaths"]} <small style={{color:"#FD2D2D"}}>(+{mainprops.stats["data"][tstamp]["new_deaths"]})</small></Typography>
@@ -89,9 +89,9 @@ function ActiveCard(mainprops) {
     }
     
     return (
-        <div>
+        <div className="deathcard">
             <AppBar position="static" elevation={0}>
-                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#FD2D2D"}}>
+                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="deathcardtab">
                     <Tab label="Cumulative"/>
                     <Tab label="Daily"/>
                 </Tabs>

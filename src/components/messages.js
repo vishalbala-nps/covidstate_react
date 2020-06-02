@@ -33,7 +33,7 @@ function MessagesDisplay() {
     return (
         <>
             <br />
-            <Box bgcolor="#CEE3FE" color="#253883" onClick={function() {
+            <Box className="messages" onClick={function() {
                 if (getmessages.loading === false && getmessages.error === false) {
                     setmessage(getmessages.messageslist[Math.floor(Math.random()*getmessages.messageslist.length)])
                 }

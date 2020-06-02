@@ -49,7 +49,7 @@ function ActiveCard(mainprops) {
             )
         } 
         return (
-            <Card>
+            <Card className="cardchart">
                 <CardContent>
                     <Typography variant="h4" align="center">Active Patients</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["active_cases"]}</Typography>
@@ -61,9 +61,9 @@ function ActiveCard(mainprops) {
     }
     
     return (
-        <div>
+        <div className="activecard">
             <AppBar position="static" elevation={0}>
-                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#FFBB33"}}>
+                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="activecardtab">
                     <Tab label="Active Patients"/>
                 </Tabs>
             </AppBar>

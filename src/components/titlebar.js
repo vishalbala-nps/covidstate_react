@@ -11,13 +11,23 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import Brightness2Icon from '@material-ui/icons/Brightness2';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { useHistory } from "react-router-dom";
+import useDarkMode from 'use-dark-mode';
 
 function TitleBar(props) {
   const [draweropen,setdraweropen] = React.useState(false);
   const [sharedialog,setsharedialog] = React.useState(false);
+  const darkMode = useDarkMode(false);
   let history = useHistory();
   if (props.type === "hometitle"){
+    let darkmodetext = "Enable Dark Mode"
+    let darkmodeicon = <Brightness2Icon />
+    if (darkMode.value) {
+        darkmodetext = "Disable Dark Mode"
+        darkmodeicon = <WbSunnyIcon />
+    }
     return (
         <>
         <Dialog open={sharedialog} onClose={function(){setsharedialog(false)}}>
@@ -74,9 +84,13 @@ function TitleBar(props) {
                     <ListItemIcon><GitHubIcon /></ListItemIcon>
                     <ListItemText primary="View Github Repository" />
                 </ListItem>
+                <ListItem button key="darkmode" onClick={darkMode.toggle}>
+                    <ListItemIcon>{darkmodeicon}</ListItemIcon>
+                    <ListItemText primary={darkmodetext}/>
+                </ListItem>
             </List>
         </Drawer>
-        <AppBar position="static">
+        <AppBar position="static" className="navstyle">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     setdraweropen(true);
@@ -93,7 +107,7 @@ function TitleBar(props) {
     );
   } else if (props.type === "backbar") {
       return (
-        <AppBar position="static">
+        <AppBar position="static" className="navstyle">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     history.push("/")

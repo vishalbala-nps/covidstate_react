@@ -184,7 +184,7 @@ function PieCard(mainprops) {
             )
         }
         return (
-            <Card>
+            <Card className="cardchart">
                 <CardContent>
                     <Typography variant="h5" align="center">Statewise Pie Charts</Typography>
                     {chartjsx}
@@ -197,9 +197,9 @@ function PieCard(mainprops) {
     }
     
     return (
-        <div>
+        <div className="piecard">
             <AppBar position="static" elevation={0}>
-                <Tabs variant="scrollable" scrollButtons="auto" value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#AE5DC9"}}>
+                <Tabs variant="scrollable" scrollButtons="auto" value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="piecardtab">
                     <Tab label="Active"/>
                     <Tab label="Infected"/>
                     <Tab label="Deaths"/>
