@@ -61,6 +61,10 @@ body.light-mode  {
     background-color: #ffffff;
     color: #000000;
   }
+  .statstable {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 body.dark-mode {
   background-color: #10171d;
@@ -105,6 +109,13 @@ body.dark-mode {
   }
   .cardchart {
     background-color: #1b2938;
+    color: #ffffff;
+  }
+  .statstable {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .statstabletext {
     color: #ffffff;
   }
 }
