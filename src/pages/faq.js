@@ -38,7 +38,7 @@ function FAQ(props) {
   //Functions
   function Addfaq(props) {
     return (
-      <ExpansionPanel>
+      <ExpansionPanel className="faqs">
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls={props.faqindex+"-content"}

@@ -98,7 +98,7 @@ function TitleBar(props) {
     );
   } else if (props.type === "backbar") {
       return (
-        <AppBar position="static">
+        <AppBar position="static" className="navstyle">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     history.push("/")

@@ -91,9 +91,9 @@ function ActiveCard(mainprops) {
     }
     
     return (
-        <div className="deathcard">
+        <div className="infectedcard">
             <AppBar position="static" elevation={0}>
-                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="deathcardtab">
+                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="infectedcardtab">
                     <Tab label="Cumulative"/>
                     <Tab label="Daily"/>
                 </Tabs>
