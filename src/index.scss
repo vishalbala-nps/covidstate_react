@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body.light-mode  {
+  background-color: #fff;
+  color: #333;
+  .navstyle {
+    background-color: #346DCE;
+  }
+  .infectedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .infectedcardtab {
+    background-color: #AE5DC9;
+  }
+  .infectedcardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .deathcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .deathcardtab {
+    background-color: #FD2D2D;
+  }
+  .deathcardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .curedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .curedcardtab {
+    background-color: #00CB58;
+  }
+  .curedcardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .activecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .activecardtab {
+    background-color: #FFBB33;
+  }
+  .activedcardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .piecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .piecardtab {
+    background-color: #AE5DC9;
+  }
+  .piecardchart {
+    background-color: #ffffff;
+    color: #1b2938;
+  }
+}
+body.dark-mode {
+  background-color: #10171d;
+  color: #dfdfdf;
+  .navstyle {
+    background-color: #1b2938;
+  }
+  .infectedcard {
+    border-color: #AE5DC9;
+    border-style: solid;
+  }
+  .infectedcardtab {
+    background-color: #1b2938;
+  }
+  .infectedcardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .deathcard {
+    border-color: #FD2D2D;
+    border-style: solid;
+  }
+  .deathcardtab {
+    background-color: #1b2938;
+  }
+  .deathcardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .curedcard {
+    border-color: #00CB58;
+    border-style: solid;
+  }
+  .curedcardtab {
+    background-color: #1b2938;
+  }
+  .curedcardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .activecard {
+    border-color: #FFBB33;
+    border-style: solid;
+  }
+  .activecardtab {
+    background-color: #1b2938;
+  }
+  .activecardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+  .piecard {
+    border-color: #AE5DC9;
+    border-style: solid;
+  }
+  .piecardtab {
+    background-color: #1b2938;
+  }
+  .piecardchart {
+    background-color: #1b2938;
+    color: #ffffff;
+  }
+}
+

@@ -12,10 +12,11 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { useHistory } from "react-router-dom";
-
+import useDarkMode from 'use-dark-mode';
 function TitleBar(props) {
   const [draweropen,setdraweropen] = React.useState(false);
   const [sharedialog,setsharedialog] = React.useState(false);
+  const darkMode = useDarkMode(false);
   let history = useHistory();
   if (props.type === "hometitle"){
     return (
@@ -74,9 +75,13 @@ function TitleBar(props) {
                     <ListItemIcon><GitHubIcon /></ListItemIcon>
                     <ListItemText primary="View Github Repository" />
                 </ListItem>
+                <ListItem button key="darkmode" onClick={darkMode.toggle}>
+                    <ListItemIcon><GitHubIcon /></ListItemIcon>
+                    <ListItemText primary="Dark Mode" />
+                </ListItem>
             </List>
         </Drawer>
-        <AppBar position="static">
+        <AppBar position="static" className="navstyle">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     setdraweropen(true);

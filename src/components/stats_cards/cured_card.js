@@ -69,7 +69,7 @@ function CuredCard(mainprops) {
             )
         }
         return (
-            <Card>
+            <Card className="curedcardchart">
                 <CardContent>
                     <Typography variant="h4" align="center">Cured</Typography>
                     <Typography variant="h5" align="center">{mainprops.stats["data"][tstamp]["India"]["cured"]} <small style={{color:"#00CB58"}}>(+{mainprops.stats["data"][tstamp]["India"]["new_cured"]})</small></Typography>
@@ -81,9 +81,9 @@ function CuredCard(mainprops) {
     }
     
     return (
-        <div>
+        <div className="curedcard">
             <AppBar position="static" elevation={0}>
-                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"#00CB58"}}>
+                <Tabs value={tabvalue} onChange={handleChange} aria-label="simple tabs example" className="curedcardtab">
                     <Tab label="Cumulative"/>
                     <Tab label="Daily"/>
                 </Tabs>
