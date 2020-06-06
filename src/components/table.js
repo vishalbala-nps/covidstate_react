@@ -87,7 +87,7 @@ function Statstable(props){
         })
     },[])
     return (
-        <>
+        <div id="stats">
             <br />
             <Container maxWidth="lg">
                 <TextField InputProps={{style:{backgroundColor: "#E8E8E8"}}} style={{width:"100%"}} label="Filter by states" variant="filled" onChange={function(event) {
@@ -102,7 +102,7 @@ function Statstable(props){
                 }}/>
                 <br/><br/>
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table" className="statstable">
+                    <Table aria-label="simple table" className="statstable" stickyHeader>
                     <TableHead className="statstabletext">
                         <TableRow>
                             <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("state")}}><b className="statstabletext">State</b></TableSortLabel></TableCell>
@@ -168,7 +168,7 @@ function Statstable(props){
                     </Table>
             </TableContainer>
         </Container>
-      </>
+      </div>
     )
 }
 
