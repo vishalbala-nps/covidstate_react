@@ -102,7 +102,7 @@ function Statstable(props){
                 }}/>
                 <br/><br/>
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table" className="statstable" stickyHeader>
+                    <Table aria-label="simple table" className="statstable">
                     <TableHead className="statstabletext">
                         <TableRow>
                             <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("state")}}><b className="statstabletext">State</b></TableSortLabel></TableCell>
