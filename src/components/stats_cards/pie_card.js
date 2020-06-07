@@ -75,7 +75,6 @@ function PieCard(mainprops) {
             let piearr = [apievals[1]["data"],apievals[2]["data"],apievals[3]["data"],apievals[4]["data"],apievals[5]["data"],apievals[6]["data"],apievals[7]["data"],apievals[8]["data"],apievals[9]["data"],apievals[0]["data"]-pietotal]
             let colors = [statecolors[apievals[1]["state"]],statecolors[apievals[2]["state"]],statecolors[apievals[3]["state"]],statecolors[apievals[4]["state"]],statecolors[apievals[5]["state"]],statecolors[apievals[6]["state"]],statecolors[apievals[7]["state"]],statecolors[apievals[8]["state"]],statecolors[apievals[9]["state"]],statecolors["Others"]]
             let labels = [apievals[1]["state"],apievals[2]["state"],apievals[3]["state"],apievals[4]["state"],apievals[5]["state"],apievals[6]["state"],apievals[7]["state"],apievals[8]["state"],apievals[9]["state"],"Others"]
-            console.log(labels)
             chartjsx = (
                 <div>
                     <Pie data={{datasets:[

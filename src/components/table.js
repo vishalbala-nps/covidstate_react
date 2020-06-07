@@ -15,7 +15,6 @@ function Statstable(props){
                 by: action.payload.key,
                 order: action.payload.order
             })
-            console.log(cstate)
             return [...cstate]
         }
     },[])
@@ -49,7 +48,6 @@ function Statstable(props){
     }
     function sorttable(row) {
         if (sort.row === row) {
-            console.log("in if")
             if (sort.order === "desc") {
                 settablejson({
                     type: "SORT_DATA",
@@ -117,7 +115,6 @@ function Statstable(props){
                     </TableHead>
                         <TableBody className="statstabletext">
                             {tablejson.map(function(row) {
-                                console.log(document.body.style.backgroundColor)
                                 let retjsx;
                                 if (row.state !== "India") {
                                     let new_cases;
