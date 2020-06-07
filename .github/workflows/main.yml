@@ -38,5 +38,9 @@ jobs:
         run: docker load --input ./docker_react/covidstate_react.tar
       - name: Start Docker Container
         run: docker run -p 8081:8081 -d covidstate_react
+      - name: Wait for 10 secs
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
       - name: Run Tests
         run: python3 docker_tests/test-web.py
