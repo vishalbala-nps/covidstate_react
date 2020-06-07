@@ -19,7 +19,11 @@ import useDarkMode from 'use-dark-mode';
 function TitleBar(props) {
   const [draweropen,setdraweropen] = React.useState(false);
   const [sharedialog,setsharedialog] = React.useState(false);
-  const darkMode = useDarkMode(false);
+  let darkmodeconfig = {}
+  if (navigator.cookieEnabled === false) {
+    darkmodeconfig = {storageKey:null}
+  }
+  const darkMode = useDarkMode(false,darkmodeconfig);
   let history = useHistory();
   if (props.type === "hometitle"){
     let darkmodetext = "Enable Dark Mode"
