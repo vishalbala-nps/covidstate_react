@@ -45,7 +45,7 @@ function HomePage() {
         }
         }}/>
         <MessagesDisplay/>
-        <Box align="center" display={{ xs: 'block', md: 'none' }}><br /><Button variant="outlined" component="a" href="#stats">Statewise Statistics</Button></Box>
+        <Box align="center" display={{ xs: 'block', md: 'none' }}><br /><Button variant="outlined" color="secondary" component="a" href="#stats">Statewise Statistics</Button></Box>
         <Statsdisplay statsstate={getstats} />
     </>
   );
