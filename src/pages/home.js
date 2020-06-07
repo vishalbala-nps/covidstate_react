@@ -4,6 +4,7 @@ import MessagesDisplay from '../components/messages.js'
 import Statsdisplay from '../components/statsdisplay.js'
 import axios from 'axios'
 import apiUrl from '../components/api_url.js'
+import { Box,Button } from "@material-ui/core";
 
 function HomePage() {
   const [getstats,setstats] = React.useReducer(function(state,action) {
@@ -44,6 +45,7 @@ function HomePage() {
         }
         }}/>
         <MessagesDisplay/>
+        <Box align="center" display={{ xs: 'block', md: 'none' }}><br /><Button variant="outlined" color="secondary" component="a" href="#stats">Statewise Statistics</Button></Box>
         <Statsdisplay statsstate={getstats} />
     </>
   );
