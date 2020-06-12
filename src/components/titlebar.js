@@ -117,7 +117,7 @@ function TitleBar(props) {
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     history.push("/")
                 }}><ArrowBackIcon /></IconButton>
-                <Typography variant="h6" color="inherit">{props.title}</Typography>
+                <Typography variant="h6" color="inherit" noWrap>{props.title}</Typography>
                 <Tooltip title="Refresh">
                     <IconButton color="inherit" style={{marginLeft: "auto",marginRight: -12}} onClick={props.clickfunc}>
                         <RefreshIcon />
