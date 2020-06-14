@@ -15,7 +15,6 @@ function Statstable(props){
                 by: action.payload.key,
                 order: action.payload.order
             })
-            console.log(cstate)
             return [...cstate]
         }
     },[])
@@ -49,7 +48,6 @@ function Statstable(props){
     }
     function sorttable(row) {
         if (sort.row === row) {
-            console.log("in if")
             if (sort.order === "desc") {
                 settablejson({
                     type: "SORT_DATA",
@@ -103,21 +101,20 @@ function Statstable(props){
                 <br/><br/>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table" className="statstable">
-                    <TableHead className="statstabletext">
-                        <TableRow>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("state")}}><b className="statstabletext">State</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("active_cases")}}><b className="statstabletext">Active Patients</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("total")}}><b className="statstabletext">Infected People</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cases")}}><b className="statstabletext">New Patients</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("deaths")}}><b className="statstabletext">Total Deaths</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_deaths")}}><b className="statstabletext">New Deaths</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("cured")}}><b className="statstabletext">Cured</b></TableSortLabel></TableCell>
-                            <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cured")}}><b className="statstabletext">New Cured</b></TableSortLabel></TableCell>
-                        </TableRow>
-                    </TableHead>
+                        <TableHead className="statstabletext">
+                            <TableRow>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("state")}}><b className="statstabletext">State</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("active_cases")}}><b className="statstabletext">Active Patients</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("total")}}><b className="statstabletext">Infected People</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cases")}}><b className="statstabletext">New Patients</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("deaths")}}><b className="statstabletext">Total Deaths</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_deaths")}}><b className="statstabletext">New Deaths</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("cured")}}><b className="statstabletext">Cured</b></TableSortLabel></TableCell>
+                                <TableCell><TableSortLabel active={true} IconComponent={HeightIcon} onClick={function() {sorttable("new_cured")}}><b className="statstabletext">New Cured</b></TableSortLabel></TableCell>
+                            </TableRow>
+                        </TableHead>
                         <TableBody className="statstabletext">
                             {tablejson.map(function(row) {
-                                console.log(document.body.style.backgroundColor)
                                 let retjsx;
                                 if (row.state !== "India") {
                                     let new_cases;

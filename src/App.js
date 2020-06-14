@@ -13,14 +13,14 @@ import {
 function App() {
   return (
     <Router>
-          <Switch>
+        <Switch>
           <Route path="/home" component={HomePage}/>
           <Route path="/state/:statename" component={Statepage}/>
           <Route path="/contacts" component={Contacts}/>
           <Route path="/faq" component={FAQ}/>
           <Route path="/" component={HomePage}/>
         </Switch>
-    </Router>
+      </Router>
   );
 }
 

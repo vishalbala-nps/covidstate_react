@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar,Toolbar,Typography,IconButton,ListItem,List,Drawer,ListItemIcon,ListItemText,Dialog,DialogTitle,ListItemAvatar,Avatar,Tooltip} from '@material-ui/core'
+import {AppBar,Toolbar,Typography,IconButton,ListItem,List,Drawer,ListItemIcon,ListItemText,Dialog,DialogTitle,ListItemAvatar,Avatar,Tooltip,Divider} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -84,6 +84,7 @@ function TitleBar(props) {
                     <ListItemIcon><ShareIcon /></ListItemIcon>
                     <ListItemText primary="Share" />
                 </ListItem>
+                <Divider />
                 <ListItem button key="github" component="a" href="https://github.com/vishalbala-nps/covidstate_react">
                     <ListItemIcon><GitHubIcon /></ListItemIcon>
                     <ListItemText primary="View Github Repository" />
@@ -116,7 +117,7 @@ function TitleBar(props) {
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={function() {
                     history.push("/")
                 }}><ArrowBackIcon /></IconButton>
-                <Typography variant="h6" color="inherit">{props.title}</Typography>
+                <Typography variant="h6" color="inherit" noWrap>{props.title}</Typography>
                 <Tooltip title="Refresh">
                     <IconButton color="inherit" style={{marginLeft: "auto",marginRight: -12}} onClick={props.clickfunc}>
                         <RefreshIcon />

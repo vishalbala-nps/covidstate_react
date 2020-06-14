@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install Modules
+      run: npm install
     - name: Build Docker Image
       run: npm run build-docker
     - name: Save Docker Image
