@@ -16,7 +16,7 @@ if ('function' === typeof importScripts) {
      });
     
     workbox.routing.registerRoute(
-            /\.(?:png|gif|jpg|jpeg)$/,
+            /\.(?:png|gif|jpg|jpeg|ico)$/,
             workbox.strategies.cacheFirst({
             cacheName: 'images',
             plugins: [
