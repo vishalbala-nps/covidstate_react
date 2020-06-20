@@ -32,7 +32,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/sw.js`;
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
@@ -95,6 +95,14 @@ function registerValidSW(swUrl, config) {
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
+    var refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange',
+      function() {
+          if (refreshing) return;
+          refreshing = true;
+          window.location.reload();
+      }
+    );
 }
 
 function checkValidServiceWorker(swUrl, config) {
