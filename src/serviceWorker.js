@@ -95,6 +95,14 @@ function registerValidSW(swUrl, config) {
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
+    var refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange',
+      function() {
+          if (refreshing) return;
+          refreshing = true;
+          window.location.reload();
+      }
+    );
 }
 
 function checkValidServiceWorker(swUrl, config) {
