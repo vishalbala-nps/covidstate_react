@@ -17,7 +17,7 @@ if ('function' === typeof importScripts) {
      
      workbox.routing.registerRoute(
         new RegExp("https:\/\/covidstate\.in\/api\/v1\/messages*"),
-        new workbox.strategies.NetworkFirst(),
+        new workbox.strategies.CacheFirst(),
         "GET"
      )
      workbox.routing.registerRoute(
@@ -27,7 +27,7 @@ if ('function' === typeof importScripts) {
      )
      workbox.routing.registerRoute(
         new RegExp("https:\/\/covidstate\.in\/api\/v1\/faqs*"),
-        new workbox.strategies.NetworkFirst(),
+        new workbox.strategies.CacheFirst(),
         "GET"
      )
 
