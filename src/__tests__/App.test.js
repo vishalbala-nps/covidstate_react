@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import StatsDisplay from './components/statsdisplay.js';
-import Titlebar from './components/titlebar.js';
+import StatsDisplay from '../components/homepage/statsdisplay.js';
+import MessagesDisplay from '../components/messages/messagesdisplay.js';
+import Titlebar from '../components/titlebar.js';
 
 var testingdatastats = {
   "data": {
@@ -315,6 +316,8 @@ var testingdatastats = {
 }
 }
 
+var testingdatamessages = ["this is a message"]
+
 test('Render Titlebar - Homepage', () => {
   render(<Titlebar type="hometitle" />);
 });
@@ -339,4 +342,19 @@ test('Render Statistics - On Success with data', () => {
   const statcardm = getByTestId("stat-cards-more");
   const statcardtable = getByTestId("stats-table");
   const statsdate = getByTestId("stats-date");
+});
+
+test('Render Messages - Loading', () => {
+    const { getByText } = render(<MessagesDisplay messagejson={{loading:true,error:false,messageslist:[]}} />);
+    const linkElement = getByText("Loading..");
+});
+
+test('Render Messages - On Error', () => {
+    const { getByText } = render(<MessagesDisplay messagejson={{loading:false,error:true,messageslist:[]}} />);
+    const linkElement = getByText("An Error Occured. Please try again soon");
+});
+
+test('Render Messages - On Success with data', () => {
+    const { getByText } = render(<MessagesDisplay messagejson={{loading:false,error:false,messageslist:testingdatamessages}} />);
+    const linkElement = getByText("this is a message");
 });

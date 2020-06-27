@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../components/titlebar.js'
-import MessagesDisplay from '../components/messages.js'
+import Messages from '../components/messages.js'
 import Statsdisplay from '../components/homepage/statsdisplay.js'
 import axios from 'axios'
 import apiUrl from '../components/api_url.js'
@@ -44,7 +44,7 @@ function HomePage() {
             getdata()
         }
         }}/>
-        <MessagesDisplay/>
+        <Messages/>
         <Box align="center" display={{ xs: 'block', md: 'none' }}><br /><Button variant="outlined" color="secondary" component="a" href="#stats">Statewise Statistics</Button></Box>
         <Statsdisplay statsstate={getstats} />
     </>
