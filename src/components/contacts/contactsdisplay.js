@@ -75,7 +75,7 @@ function ContactsDisplay(props) {
           return state["state"].includes(capitalizeFirstLetter(getsearch))
         })
         contactsjsx = (
-          <Box m={1}>
+          <Box m={1} data-testid="contacts">
             <br />
             <Card className="natcontacts">
               <CardContent>

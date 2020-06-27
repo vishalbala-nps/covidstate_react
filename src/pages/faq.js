@@ -1,11 +1,8 @@
 import React from 'react';
 import TitleBar from '../components/titlebar.js'
 import axios from 'axios'
-import {ExpansionPanel,ExpansionPanelSummary,ExpansionPanelDetails,Typography} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import apiUrl from '../components/api_url.js'
-import LoadingScreen from '../components/loading_screen.js'
-import ErrorScreen from '../components/onerror.js'
+import FAQDisplay from '../components/faq/faqdisplay.js'
 
 function FAQ(props) {
   const [getfaq,setfaq] = React.useReducer(function(state,action) {
@@ -35,56 +32,19 @@ function FAQ(props) {
   React.useEffect(function() {
     getdata()
   },[])
-  //Functions
-  function Addfaq(props) {
-    return (
-      <ExpansionPanel className="faqs">
-      <ExpansionPanelSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls={props.faqindex+"-content"}
-        id={props.faqindex}
-      >
-        <Typography><b>{props.faq["question"]}</b></Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <Typography dangerouslySetInnerHTML={{__html:props.faq["answer"]}} />
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-    )
-  }
-  if (getfaq.loading === true) {
-    return (
-      <>
-        <TitleBar type="backbar" title="FAQ" />
-        <LoadingScreen />
-      </>
-    )
-  } else {
-    if (getfaq.error === true) {
-      return (
-        <>
-          <TitleBar type="backbar" title="FAQ" />
-          <ErrorScreen />
-        </>
-      )
-    } else {
-      return (
-        <>
-          <TitleBar type="backbar" title="FAQ" clickfunc={function() {
-            if (getfaq.loading === false) {
-              setfaq({
-                type: "DATA_LOADING"
-              })
-              getdata()
-            }
-          }}/>
-          {getfaq.faqlist.map(function(item,index) {
-            return (<Addfaq faq={item} faqindex={index} key={index}/>)
-          })}
-        </>
-      )
-    }
-  }
+  return (
+    <>
+      <TitleBar type="backbar" title="FAQ" clickfunc={function() {
+        if (getfaq.loading === false) {
+          setfaq({
+            type: "DATA_LOADING"
+          })
+          getdata()
+        }
+      }}/>
+      <FAQDisplay faqjson={getfaq} />
+    </>
+  )
 }
   
 export default FAQ;
