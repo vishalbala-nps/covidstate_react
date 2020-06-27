@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography,Box } from '@material-ui/core';
 import axios from 'axios'
-import apiUrl from '../components/api_url.js'
+import apiUrl from './api_url.js'
 function MessagesDisplay() {
     const [getmessages,setmessages] = React.useReducer(function(state,action) {
         if (action.type === "DATA_LOADED") {
