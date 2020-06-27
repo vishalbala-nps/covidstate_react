@@ -37,11 +37,11 @@ function FAQDisplay(gprops) {
       )
     } else {
       return (
-        <>
+        <div data-testid="faqs">
           {getfaq.faqlist.map(function(item,index) {
             return (<Addfaq faq={item} faqindex={index} key={index}/>)
           })}
-        </>
+        </div>
       )
     }
   }
