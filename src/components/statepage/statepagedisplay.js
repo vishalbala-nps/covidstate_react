@@ -20,7 +20,7 @@ function StatePageDisplay(props) {
     } else {
       resjsx = (
         <>
-          <Box m={1}>
+          <Box m={1} data-testid="statestatscard">
             <Grid container justify="center" spacing={2}>
               <Grid item md={6}>
                 <InfectedCard stats={stats.stats} state={state}/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import StatsDisplay from '../components/homepage/statsdisplay.js';
+import StatePageDisplay from '../components/statepage/statepagedisplay.js';
 import MessagesDisplay from '../components/messages/messagesdisplay.js';
 import Titlebar from '../components/titlebar.js';
 
@@ -318,6 +319,42 @@ var testingdatastats = {
 
 var testingdatamessages = ["this is a message"]
 
+var testingdatastatestats = {
+    "data": {
+        "03/10": {
+            "active_cases": 9,
+            "cured": 0,
+            "deaths": 0,
+            "new_cases": 9,
+            "new_cured": 0,
+            "new_deaths": 0,
+            "total": 9
+        },
+        "03/11": {
+            "active_cases": 17,
+            "cured": 0,
+            "deaths": 0,
+            "new_cases": 8,
+            "new_cured": 0,
+            "new_deaths": 0,
+            "total": 17
+        },
+        "03/12": {
+            "active_cases": 17,
+            "cured": 0,
+            "deaths": 0,
+            "new_cases": 0,
+            "new_cured": 0,
+            "new_deaths": 0,
+            "total": 17
+        }
+    },
+    "timestamp": {
+        "updated_date": "03/12",
+        "updated_time": "2020-06-27 09:20 AM"
+    }
+}
+
 test('Render Titlebar - Homepage', () => {
   render(<Titlebar type="hometitle" />);
 });
@@ -344,6 +381,22 @@ test('Render Statistics - On Success with data', () => {
   const statsdate = getByTestId("stats-date");
 });
 
+test('Render Statewise Statistics - Loading', () => {
+    const { getByTestId } = render(<StatePageDisplay stats={{loading:true,error:false,stats:[]}} state="Abc" />);
+    const linkElement = getByTestId("loadingscreen");
+});
+  
+test('Render Statewise - On Error', () => {
+    const { getByTestId } = render(<StatePageDisplay stats={{loading:false,error:true,stats:[]}} state="Abc" />);
+    const linkElement = getByTestId("errorscreen");
+});
+  
+test('Render Statewise - On Success with data', () => {
+    const { getByTestId } = render(<StatePageDisplay stats={{loading:false,error:false,stats:testingdatastatestats}} state="Abc" />);
+    const statcard = getByTestId("statestatscard");
+});
+  
+
 test('Render Messages - Loading', () => {
     const { getByText } = render(<MessagesDisplay messagejson={{loading:true,error:false,messageslist:[]}} />);
     const linkElement = getByText("Loading..");
@@ -358,3 +411,4 @@ test('Render Messages - On Success with data', () => {
     const { getByText } = render(<MessagesDisplay messagejson={{loading:false,error:false,messageslist:testingdatamessages}} />);
     const linkElement = getByText("this is a message");
 });
+
