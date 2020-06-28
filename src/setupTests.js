@@ -3,3 +3,11 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+
+jest.mock('react-chartjs-2', () => ({
+    Line: () => null,
+    Bar: () => null,
+    Pie: () => null
+}))
+
+jest.mock('chartjs-plugin-labels', () => null)

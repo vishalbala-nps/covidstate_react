@@ -8,8 +8,8 @@ import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LoadingScreen from '../components/loading_screen.js'
-import ErrorScreen from '../components/onerror.js'
+import LoadingScreen from '../../components/loading_screen.js'
+import ErrorScreen from '../../components/onerror.js'
 
 function Statsdisplay(props){
     if (props.statsstate.loading === true) {
@@ -21,8 +21,8 @@ function Statsdisplay(props){
             return (
             <>
                 <br />
-                <Typography variant="h5" align="center">As on: {props.statsstate.stats["timestamp"]["latest_updated_time"]}</Typography>
-                <Box m={1}>
+                <Typography data-testid="stats-date" variant="h5" align="center">As on: {props.statsstate.stats["timestamp"]["latest_updated_time"]}</Typography>
+                <Box m={1} data-testid="stat-cards">
                     <Grid container justify="center" spacing={2}>
                         <Grid item md={4}>
                             <InfectedCard stats={props.statsstate.stats} />
@@ -35,7 +35,7 @@ function Statsdisplay(props){
                         </Grid>
                     </Grid>
                 </Box>
-                <Box m={1}>
+                <Box m={1} data-testid="stat-cards-more">
                     <Grid container justify="center" spacing={2}>
                         <Grid item sm={6}>
                             <PieCard stats={props.statsstate.stats} />

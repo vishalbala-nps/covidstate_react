@@ -85,7 +85,7 @@ function Statstable(props){
         })
     },[])
     return (
-        <div id="stats">
+        <div id="stats" data-testid="stats-table">
             <br />
             <Container maxWidth="lg">
                 <TextField InputProps={{style:{backgroundColor: "#E8E8E8"}}} style={{width:"100%"}} label="Filter by states" variant="filled" onChange={function(event) {

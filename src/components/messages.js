@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography,Box } from '@material-ui/core';
 import axios from 'axios'
-import apiUrl from '../components/api_url.js'
-function MessagesDisplay() {
+import apiUrl from './api_url.js'
+import MessagesDisplay from "./messages/messagesdisplay.js"
+function Messages() {
     const [getmessages,setmessages] = React.useReducer(function(state,action) {
         if (action.type === "DATA_LOADED") {
           return {loading:false,error:false,messageslist:action.payload}
@@ -12,7 +12,6 @@ function MessagesDisplay() {
           return new Error()
         }
       },{loading:true,error:false,messageslist:[]})
-    const [getmessage,setmessage] = React.useState("Loading..")
     React.useEffect(function() {
         axios.get(apiUrl+"/messages").then(function(result) {
             setmessages({
@@ -23,25 +22,7 @@ function MessagesDisplay() {
             setmessages({type: "DATA_ERROR"})
         })
     },[])
-    if (getmessages.loading === false && getmessage === "Loading..") {
-        if (getmessages.error === true) {
-            setmessage("An Error Occured. Please try again soon")
-        } else {
-            setmessage(getmessages.messageslist[Math.floor(Math.random()*getmessages.messageslist.length)])
-        }
-    }
-    return (
-        <>
-            <br />
-            <Box className="messages" onClick={function() {
-                if (getmessages.loading === false && getmessages.error === false) {
-                    setmessage(getmessages.messageslist[Math.floor(Math.random()*getmessages.messageslist.length)])
-                }
-            }}>
-                <Typography align="center" variant="h6"><b>{getmessage}</b></Typography>
-            </Box>
-        </>
-    )
+    return (<MessagesDisplay messagejson={getmessages} />)
 }
 
-export default MessagesDisplay;
+export default Messages;
