@@ -1,6 +1,6 @@
 import React from 'react';
 import Statstable from './table.js'
-import {Typography} from '@material-ui/core';
+import {Typography,Button} from '@material-ui/core';
 import { MuiPickersUtilsProvider,KeyboardDatePicker } from '@material-ui/pickers';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
@@ -13,10 +13,8 @@ import Box from '@material-ui/core/Box';
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
 function Statsdisplay(props){
-    const [fromselectedDate,setfromselectedDate] = React.useState(moment("10/Mar/2020","DD/MMM/yyyy"))
-    const [toselectedDate,settoselectedDate] = React.useState(moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy")))
     //Functions
-    function betweenDate(fromdate,todate,changedfrom) {
+    function betweenDate(fromdate,todate) {
         let apid = {...props.statsstate.stats.apistats.data}
         let tstamps = []
         for (let key in apid) {
@@ -30,10 +28,24 @@ function Statsdisplay(props){
         }
         props.setstatsstate({type:"DATA_UPDATE",payload:{data:apid,timestamp:{latest_updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}})
     }
-    console.log(props)
-    return (
-        <>
-            <br />
+    function resetDate() {
+        let apid = {...props.statsstate.stats.apistats}
+        props.setstatsstate({type:"DATA_UPDATE",payload:apid})
+    }
+    //Components
+    function DatePickers() {
+        const [fromselectedDate,setfromselectedDate] = React.useState(moment("10/Mar/2020","DD/MMM/yyyy"))
+        const [toselectedDate,settoselectedDate] = React.useState(moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy")))
+        let firstmount = React.useRef(true)
+        React.useEffect(function() {
+            if (firstmount.current) {
+                firstmount.current = false
+            } else {
+                betweenDate(fromselectedDate,toselectedDate)
+            }
+        },[fromselectedDate,toselectedDate])
+        console.log(firstmount)
+        return (
             <Box m={1}>
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                 <Grid container justify="center" spacing={2}>
@@ -46,7 +58,7 @@ function Statsdisplay(props){
                             label="From"
                             value={fromselectedDate}
                             onChange={function(d) {
-                                betweenDate(d,toselectedDate,"from")
+                                setfromselectedDate(d)
                             }}/>
                     </Grid>
                     <Grid item>
@@ -58,12 +70,23 @@ function Statsdisplay(props){
                             label="To"
                             value={toselectedDate}
                             onChange={function(d) {
-                                betweenDate(fromselectedDate,d,"to")
+                                settoselectedDate(d)
                             }}/>
+                    </Grid>
+                    <Grid item>
+                        <Button onClick={function() {
+                            resetDate()
+                        }}>Reset</Button>
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
             </Box>
+        )
+    }
+    return (
+        <>
+            <br />
+            <DatePickers />
             <Box m={1} data-testid="stat-cards">
                 <Grid container justify="center" spacing={2}>
                     <Grid item md={4}>
