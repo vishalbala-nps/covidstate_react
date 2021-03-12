@@ -111,9 +111,9 @@ function Statsdisplay(props){
             <Typography data-testid="stats-date" variant="h5" align="center"><b>As on: {props.statsstate.stats.apistats["timestamp"]["latest_updated_time"]}</b></Typography>
             <Statstable statsstate={props.statsstate.stats.apistats}/>
             <br />
-            <Grid container justify="center" spacing={2}>
+            <Grid container justify="center">
                 <Grid item md={9}>
-                    <PieCard stats={props.statsstate.stats.apistats} />
+                    <PieCard align="center" stats={props.statsstate.stats.apistats} />
                 </Grid>
             </Grid>
         </>
