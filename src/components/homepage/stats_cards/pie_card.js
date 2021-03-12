@@ -51,6 +51,7 @@ function PieCard(mainprops) {
         let cpievals = [];
         let dpievals = [];
         let apievals = [];
+        console.log(mainprops.stats["data"])
         for (let key in mainprops.stats["data"][tstamp] ) {
             ipievals.push({"state": key,"data":mainprops.stats["data"][tstamp][key]["total"]})
             cpievals.push({"state": key,"data":mainprops.stats["data"][tstamp][key]["cured"]})

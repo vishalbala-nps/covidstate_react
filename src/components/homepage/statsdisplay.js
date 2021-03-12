@@ -9,81 +9,92 @@ import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LoadingScreen from '../../components/loading_screen.js'
-import ErrorScreen from '../../components/onerror.js'
+
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
 function Statsdisplay(props){
     const [fromselectedDate,setfromselectedDate] = React.useState(moment("10/Mar/2020","DD/MMM/yyyy"))
-    const [toselectedDate,settoselectedDate] = React.useState()
-    if (props.statsstate.loading === true) {
-        return (<LoadingScreen />)
-    } else {
-        if (props.statsstate.error === true) {
-            return (<ErrorScreen />)
-        } else {
-            return (
-            <>
-                <br />
-                <Box m={1}>
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                    <Grid container justify="center" spacing={2}>
-                        <Grid item>
-                            <KeyboardDatePicker
-                                variant="inline"
-                                disableToolbar
-                                format="DD/MMM/yyyy"
-                                margin="normal"
-                                label="From"
-                                value={fromselectedDate}
-                                onChange={setfromselectedDate}/>
-                        </Grid>
-                        <Grid item>
-                            <KeyboardDatePicker
-                                variant="inline"
-                                disableToolbar
-                                format="DD/MMM/yyyy"
-                                margin="normal"
-                                label="To"
-                                value={moment(props.statsstate.stats.timestamp.latest_updated_date,"DD/mm/yyyy").format("DD/mm/yyyy")}
-                                onChange={settoselectedDate}/>
-                        </Grid>
-                    </Grid>
-                    </MuiPickersUtilsProvider>
-                </Box>
-                <Box m={1} data-testid="stat-cards">
-                    <Grid container justify="center" spacing={2}>
-                        <Grid item md={4}>
-                            <InfectedCard stats={props.statsstate.stats} />
-                        </Grid>
-                        <Grid item md={4}>
-                            <DeathCard stats={props.statsstate.stats} />
-                        </Grid>
-                        <Grid item md={4}>
-                            <CuredCard stats={props.statsstate.stats} />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box m={1} data-testid="stat-cards-more">
-                    <Grid container justify="center" spacing={2}>
-                        <Grid item sm={6}>
-                            <ActiveCard stats={props.statsstate.stats} />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <br />
-                <Typography data-testid="stats-date" variant="h5" align="center"><b>As on: {props.statsstate.stats["timestamp"]["latest_updated_time"]}</b></Typography>
-                <Statstable statsstate={props.statsstate.stats}/>
-                <br />
+    const [toselectedDate,settoselectedDate] = React.useState(moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy")))
+    //Functions
+    function betweenDate(fromdate,todate,changedfrom) {
+        let apid = {...props.statsstate.stats.apistats.data}
+        let tstamps = []
+        for (let key in apid) {
+            if (apid.hasOwnProperty(key)) {
+                if (moment(key,"DD/MM/YY").isBetween(fromdate,todate,null,"[]")) {
+                    tstamps.push(moment(key,"DD/MM/YY").valueOf())
+                } else {
+                    delete apid[key]
+                }
+            }
+        }
+        props.setstatsstate({type:"DATA_UPDATE",payload:{data:apid,timestamp:{latest_updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}})
+    }
+    console.log(props)
+    return (
+        <>
+            <br />
+            <Box m={1}>
+                <MuiPickersUtilsProvider utils={MomentUtils}>
                 <Grid container justify="center" spacing={2}>
-                    <Grid item md={9}>
-                        <PieCard stats={props.statsstate.stats} />
+                    <Grid item>
+                        <KeyboardDatePicker
+                            variant="inline"
+                            disableToolbar
+                            format="DD/MMM/yyyy"
+                            margin="normal"
+                            label="From"
+                            value={fromselectedDate}
+                            onChange={function(d) {
+                                betweenDate(d,toselectedDate,"from")
+                            }}/>
+                    </Grid>
+                    <Grid item>
+                        <KeyboardDatePicker
+                            variant="inline"
+                            disableToolbar
+                            format="DD/MMM/yyyy"
+                            margin="normal"
+                            label="To"
+                            value={toselectedDate}
+                            onChange={function(d) {
+                                betweenDate(fromselectedDate,d,"to")
+                            }}/>
                     </Grid>
                 </Grid>
-            </>
-            )
-        }
-    }
+                </MuiPickersUtilsProvider>
+            </Box>
+            <Box m={1} data-testid="stat-cards">
+                <Grid container justify="center" spacing={2}>
+                    <Grid item md={4}>
+                        <InfectedCard stats={props.statsstate.stats.filteredstats} />
+                    </Grid>
+                    <Grid item md={4}>
+                        <DeathCard stats={props.statsstate.stats.filteredstats} />
+                    </Grid>
+                    <Grid item md={4}>
+                        <CuredCard stats={props.statsstate.stats.filteredstats} />
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box m={1} data-testid="stat-cards-more">
+                <Grid container justify="center" spacing={2}>
+                    <Grid item sm={6}>
+                        <ActiveCard stats={props.statsstate.stats.filteredstats} />
+                    </Grid>
+                </Grid>
+            </Box>
+            <br />
+            <Typography data-testid="stats-date" variant="h5" align="center"><b>As on: {props.statsstate.stats.apistats["timestamp"]["latest_updated_time"]}</b></Typography>
+            <Statstable statsstate={props.statsstate.stats.apistats}/>
+            <br />
+            <Grid container justify="center" spacing={2}>
+                <Grid item md={9}>
+                    <PieCard stats={props.statsstate.stats.apistats} />
+                </Grid>
+            </Grid>
+        </>
+        )
 }
 
 export default Statsdisplay;
