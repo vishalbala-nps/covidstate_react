@@ -122,7 +122,7 @@ function Statsdisplay(props){
             </Box>
             <br />
             <Typography data-testid="stats-date" variant="h5" align="center"><b>As on: {props.statsstate.stats.apistats["timestamp"]["latest_updated_time"]}</b></Typography>
-            <Statstable statsstate={props.statsstate.stats.apistats}/>
+            <Statstable statsstate={props.statsstate.stats.apistats} fromd={fromDate.format("DD-MMM-yyyy")} tod={toDate.format("DD-MMM-yyyy")}/>
             <br />
             <Grid container justify="center">
                 <Grid item md={9}>

@@ -144,7 +144,7 @@ function Statstable(props){
                                     
                                     retjsx = (
                                         <TableRow hover key={row.state} onClick={function() {
-                                            history.push("/state/"+row.state)
+                                            history.push("/state/"+row.state+"/"+props.fromd+"/"+props.tod)
                                         }}>
                                             <TableCell className="statstabletext"  component="th" scope="row">
                                                 {row.state}

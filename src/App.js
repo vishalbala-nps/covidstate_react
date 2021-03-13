@@ -15,7 +15,7 @@ function App() {
     <Router>
         <Switch>
           <Route path="/home" component={HomePage}/>
-          <Route path="/state/:statename" component={Statepage}/>
+          <Route path="/state/:statename/:fromd?/:tod?" component={Statepage}/>
           <Route path="/contacts" component={Contacts}/>
           <Route path="/faq" component={FAQ}/>
           <Route path="/" component={HomePage}/>
