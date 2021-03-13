@@ -1,13 +1,15 @@
 import React from 'react';
 import Statstable from './table.js'
-import {Typography,Button} from '@material-ui/core';
-import { MuiPickersUtilsProvider,KeyboardDatePicker } from '@material-ui/pickers';
+import Typography from '@material-ui/core/Typography';
+import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
 import CuredCard from './stats_cards/cured_card.js'
 import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import Box from '@material-ui/core/Box';
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
@@ -57,37 +59,51 @@ function Statsdisplay(props){
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <Grid container justify="center" spacing={2}>
                         <Grid item>
-                            <KeyboardDatePicker
+                            <DatePicker
                                 variant="inline"
                                 disableToolbar
                                 format="DD/MMM/yyyy"
                                 margin="normal"
                                 label="From"
+                                minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
+                                InputProps={{ readOnly: true }}
                                 value={fromselectedDate}
                                 onChange={function(d) {
-                                    fromDate = d
-                                    sdate.current.from = d
-                                    setfromselectedDate(d)
+                                    if (d.valueOf() < toselectedDate.valueOf()) {
+                                        if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
+                                            fromDate = d
+                                            sdate.current.from = d
+                                            setfromselectedDate(d)
+                                        }
+                                    }
                                 }}/>
                         </Grid>
                         <Grid item>
-                            <KeyboardDatePicker
+                            <DatePicker
                                 variant="inline"
                                 disableToolbar
                                 format="DD/MMM/yyyy"
                                 margin="normal"
                                 label="To"
+                                maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
+                                InputProps={{ readOnly: true }}
                                 value={toselectedDate}
                                 onChange={function(d) {
-                                    toDate = d
-                                    sdate.current.to = d
-                                    settoselectedDate(d)
+                                    console.log(d.format("DD/MMM/yyyy"))
+                                    console.log(fromselectedDate.format("DD/MMM/yyyy"))
+                                    if (d.valueOf() > fromselectedDate.valueOf()) {
+                                        if (d.format("DD/MMM/yyyy") !== fromselectedDate.format("DD/MMM/yyyy")) {
+                                            toDate = d
+                                            sdate.current.to = d
+                                            settoselectedDate(d)
+                                        }
+                                    }
                                 }}/>
                         </Grid>
                         <Grid item>
-                            <Button onClick={function() {
+                            <IconButton onClick={function() {
                                 resetDate()
-                            }}>Reset</Button>
+                            }}><RefreshIcon /></IconButton>
                         </Grid>
                     </Grid>
                 </MuiPickersUtilsProvider>

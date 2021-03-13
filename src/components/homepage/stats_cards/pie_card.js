@@ -51,7 +51,6 @@ function PieCard(mainprops) {
         let cpievals = [];
         let dpievals = [];
         let apievals = [];
-        console.log(mainprops.stats["data"])
         for (let key in mainprops.stats["data"][tstamp] ) {
             ipievals.push({"state": key,"data":mainprops.stats["data"][tstamp][key]["total"]})
             cpievals.push({"state": key,"data":mainprops.stats["data"][tstamp][key]["cured"]})
@@ -103,7 +102,6 @@ function PieCard(mainprops) {
             let piearr = [ipievals[1]["data"],ipievals[2]["data"],ipievals[3]["data"],ipievals[4]["data"],ipievals[5]["data"],ipievals[6]["data"],ipievals[7]["data"],ipievals[8]["data"],ipievals[9]["data"],ipievals[0]["data"]-pietotal]
             let colors = [statecolors[ipievals[1]["state"]],statecolors[ipievals[2]["state"]],statecolors[ipievals[3]["state"]],statecolors[ipievals[4]["state"]],statecolors[ipievals[5]["state"]],statecolors[ipievals[6]["state"]],statecolors[ipievals[7]["state"]],statecolors[ipievals[8]["state"]],statecolors[ipievals[9]["state"]],statecolors["Others"]]
             let labels = [ipievals[1]["state"],ipievals[2]["state"],ipievals[3]["state"],ipievals[4]["state"],ipievals[5]["state"],ipievals[6]["state"],ipievals[7]["state"],ipievals[8]["state"],ipievals[9]["state"],"Others"]
-            console.log(labels)
             chartjsx = (
                 <div>
                     <Pie data={{datasets:[
@@ -131,7 +129,6 @@ function PieCard(mainprops) {
             let piearr = [dpievals[1]["data"],dpievals[2]["data"],dpievals[3]["data"],dpievals[4]["data"],dpievals[5]["data"],dpievals[6]["data"],dpievals[7]["data"],dpievals[8]["data"],dpievals[9]["data"],dpievals[0]["data"]-pietotal]
             let colors = [statecolors[dpievals[1]["state"]],statecolors[dpievals[2]["state"]],statecolors[dpievals[3]["state"]],statecolors[dpievals[4]["state"]],statecolors[dpievals[5]["state"]],statecolors[dpievals[6]["state"]],statecolors[dpievals[7]["state"]],statecolors[dpievals[8]["state"]],statecolors[dpievals[9]["state"]],statecolors["Others"]]
             let labels = [dpievals[1]["state"],dpievals[2]["state"],dpievals[3]["state"],dpievals[4]["state"],dpievals[5]["state"],dpievals[6]["state"],dpievals[7]["state"],dpievals[8]["state"],dpievals[9]["state"],"Others"]
-            console.log(labels)
             chartjsx = (
                 <div>
                     <Pie data={{datasets:[
@@ -159,7 +156,6 @@ function PieCard(mainprops) {
             let piearr = [cpievals[1]["data"],cpievals[2]["data"],cpievals[3]["data"],cpievals[4]["data"],cpievals[5]["data"],cpievals[6]["data"],cpievals[7]["data"],cpievals[8]["data"],cpievals[9]["data"],cpievals[0]["data"]-pietotal]
             let colors = [statecolors[cpievals[1]["state"]],statecolors[cpievals[2]["state"]],statecolors[cpievals[3]["state"]],statecolors[cpievals[4]["state"]],statecolors[cpievals[5]["state"]],statecolors[cpievals[6]["state"]],statecolors[cpievals[7]["state"]],statecolors[cpievals[8]["state"]],statecolors[cpievals[9]["state"]],statecolors["Others"]]
             let labels = [cpievals[1]["state"],cpievals[2]["state"],cpievals[3]["state"],cpievals[4]["state"],cpievals[5]["state"],cpievals[6]["state"],cpievals[7]["state"],cpievals[8]["state"],cpievals[9]["state"],"Others"]
-            console.log(labels)
             chartjsx = (
                 <div>
                     <Pie data={{datasets:[
