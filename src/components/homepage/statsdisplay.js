@@ -9,9 +9,12 @@ import ActiveCard from './stats_cards/active_card.js'
 import PieCard from './stats_cards/pie_card.js'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
 import MomentUtils from '@date-io/moment';
 import moment from "moment";
+
+let fromDate = moment("10/Mar/2020","DD/MMM/yyyy");
+let toDate = moment()
+
 function Statsdisplay(props){
     //Functions
     function betweenDate(fromdate,todate) {
@@ -34,51 +37,59 @@ function Statsdisplay(props){
     }
     //Components
     function DatePickers() {
-        const [fromselectedDate,setfromselectedDate] = React.useState(moment("10/Mar/2020","DD/MMM/yyyy"))
-        const [toselectedDate,settoselectedDate] = React.useState(moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy")))
+        React.useEffect(function() {
+            fromDate = moment("10/Mar/2020","DD/MMM/yyyy")
+            toDate = moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))
+        },[])
+        const [fromselectedDate,setfromselectedDate] = React.useState(fromDate)
+        const [toselectedDate,settoselectedDate] = React.useState(toDate)
         let firstmount = React.useRef(true)
+        let sdate = React.useRef({from:fromselectedDate,to:toselectedDate})
         React.useEffect(function() {
             if (firstmount.current) {
                 firstmount.current = false
             } else {
-                betweenDate(fromselectedDate,toselectedDate)
+                betweenDate(sdate.current.from,sdate.current.to)
             }
         },[fromselectedDate,toselectedDate])
-        console.log(firstmount)
         return (
             <Box m={1}>
                 <MuiPickersUtilsProvider utils={MomentUtils}>
-                <Grid container justify="center" spacing={2}>
-                    <Grid item>
-                        <KeyboardDatePicker
-                            variant="inline"
-                            disableToolbar
-                            format="DD/MMM/yyyy"
-                            margin="normal"
-                            label="From"
-                            value={fromselectedDate}
-                            onChange={function(d) {
-                                setfromselectedDate(d)
-                            }}/>
+                    <Grid container justify="center" spacing={2}>
+                        <Grid item>
+                            <KeyboardDatePicker
+                                variant="inline"
+                                disableToolbar
+                                format="DD/MMM/yyyy"
+                                margin="normal"
+                                label="From"
+                                value={fromselectedDate}
+                                onChange={function(d) {
+                                    fromDate = d
+                                    sdate.current.from = d
+                                    setfromselectedDate(d)
+                                }}/>
+                        </Grid>
+                        <Grid item>
+                            <KeyboardDatePicker
+                                variant="inline"
+                                disableToolbar
+                                format="DD/MMM/yyyy"
+                                margin="normal"
+                                label="To"
+                                value={toselectedDate}
+                                onChange={function(d) {
+                                    toDate = d
+                                    sdate.current.to = d
+                                    settoselectedDate(d)
+                                }}/>
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={function() {
+                                resetDate()
+                            }}>Reset</Button>
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                        <KeyboardDatePicker
-                            variant="inline"
-                            disableToolbar
-                            format="DD/MMM/yyyy"
-                            margin="normal"
-                            label="To"
-                            value={toselectedDate}
-                            onChange={function(d) {
-                                settoselectedDate(d)
-                            }}/>
-                    </Grid>
-                    <Grid item>
-                        <Button onClick={function() {
-                            resetDate()
-                        }}>Reset</Button>
-                    </Grid>
-                </Grid>
                 </MuiPickersUtilsProvider>
             </Box>
         )
@@ -86,7 +97,9 @@ function Statsdisplay(props){
     return (
         <>
             <br />
-            <DatePickers />
+            <DatePickers cback={function() {
+                console.log("h")
+            }} />
             <Box m={1} data-testid="stat-cards">
                 <Grid container justify="center" spacing={2}>
                     <Grid item md={4}>
