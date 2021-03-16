@@ -22,18 +22,17 @@ function Statepage(props) {
       } else if (action.type === "DATA_ERROR") {
         return {loading:false,error:true,stats:{}}
       } else if (action.type === "DATA_LOADED") {
-          let tstamps = []
           let apid = {...action.payload.data}
           for (let key in apid) {
               if (apid.hasOwnProperty(key)) {
                   if (moment(key,"DD/MM/YY").isBetween(moment(fromd,"DD-MMM-YYYY"),moment(tod,"DD-MMM-YYYY"),null,"[]")) {
-                      tstamps.push(moment(key,"DD/MM/YY").valueOf())
                   } else {
                       delete apid[key]
                   }
-              }
+              }     
         }
-        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}}
+        console.log(moment(props.match.params.tod,"DD-MMM-YYYY"))
+        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(props.match.params.tod,"DD-MMM-YYYY").format("DD/MM/YY")}}}
       }
     },{loading:true,error:false,stats:{}}
   )
