@@ -35,9 +35,9 @@ function Statepage(props) {
                   }
               }     
         }
-        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(tod,"DD-MMM-YYYY").format("DD/MM/YY")}}}
+        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(tod,"DD-MMM-YYYY").format("DD/MM/YY")}},last_upd_time_server:action.payload.timestamp.updated_date,initdata:action.payload}
       }
-    },{loading:true,error:false,stats:{}}
+    },{loading:true,error:false,stats:{},last_upd_time_server:""}
   )
   //Functions
   React.useEffect(function() {

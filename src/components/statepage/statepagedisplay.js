@@ -7,10 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LoadingScreen from '../loading_screen.js'
 import ErrorScreen from '../onerror.js'
-/*import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import IconButton from '@material-ui/core/IconButton';
-import RefreshIcon from '@material-ui/icons/Refresh';*/
+import RefreshIcon from '@material-ui/icons/Refresh';
 import moment from "moment";
 
 function StatePageDisplay(props) {
@@ -38,7 +38,7 @@ function StatePageDisplay(props) {
             }
         }
     }
-    props.setstats({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}})
+    props.setstats({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
   }
   //Effects
   React.useEffect(function() {
@@ -62,7 +62,7 @@ function StatePageDisplay(props) {
       resjsx = (
         <>
           <Box m={1} data-testid="statestatscard">
-            {/*<MuiPickersUtilsProvider utils={MomentUtils}>
+            <MuiPickersUtilsProvider utils={MomentUtils}>
             <Grid container justify="center" spacing={2}>
               <Grid item>
                 <DatePicker
@@ -75,9 +75,13 @@ function StatePageDisplay(props) {
                   InputProps={{ readOnly: true }}
                   value={fromselectedDate}
                   onChange={function(d) {
-                    tod = d
-                    sdate.current.from = d
-                    setfromselectedDate(d)
+                    if (d.valueOf() < toselectedDate.valueOf()) {
+                      if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
+                        fromd = d
+                        sdate.current.from = d
+                        setfromselectedDate(d)
+                      }
+                    }
                   }}
                 />
               </Grid>
@@ -88,23 +92,27 @@ function StatePageDisplay(props) {
                   format="DD/MMM/yyyy"
                   margin="normal"
                   label="To"
-                  maxDate={moment(moment(props.stats.stats.timestamp.updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
+                  maxDate={moment(moment(props.stats.last_upd_time_server,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                   InputProps={{ readOnly: true }}
                   value={toselectedDate}
                   onChange={function(d) {
-                    tod = d
-                    sdate.current.to = d
-                    settoselectedDate(d)
+                    if (d.valueOf() > fromselectedDate.valueOf()) {
+                      if (d.format("DD/MMM/yyyy") !== fromselectedDate.format("DD/MMM/yyyy")) {
+                        tod = d
+                        sdate.current.to = d
+                        settoselectedDate(d)
+                      }
+                    }
                   }}
                 />
               </Grid>
               <Grid item>
                 <IconButton onClick={function() {
-                  console.log("todo")
+                  props.setstats({type:"DATA_LOADED",payload:props.stats.initdata})
                 }}><RefreshIcon /></IconButton>
               </Grid>
             </Grid>
-            </MuiPickersUtilsProvider>*/}
+            </MuiPickersUtilsProvider>
             <Grid container justify="center" spacing={2}>
               <Grid item md={6}>
                 <InfectedCard stats={stats.stats} state={state}/>
