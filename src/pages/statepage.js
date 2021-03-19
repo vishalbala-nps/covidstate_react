@@ -27,6 +27,7 @@ function Statepage(props) {
         return {...nstate}
       } else if (action.type === "DATA_LOADED") {
           let apid = {...action.payload.data}
+          let tstamps = []
           for (let key in apid) {
               if (apid.hasOwnProperty(key)) {
                   if (moment(key,"DD/MM/YY").isBetween(moment(fromd,"DD-MMM-YYYY"),moment(tod,"DD-MMM-YYYY"),null,"[]")) {
@@ -35,9 +36,16 @@ function Statepage(props) {
                   }
               }     
         }
-        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(tod,"DD-MMM-YYYY").format("DD/MM/YY")}},last_upd_time_server:action.payload.timestamp.updated_date,initdata:action.payload}
+        for (let key in action.payload.data) {
+          if (apid.hasOwnProperty(key)) {
+              if (moment(key,"DD/MM/YY").isBetween(moment(fromd,"DD-MMM-YYYY"),moment(tod,"DD-MMM-YYYY"),null,"[]")) {
+                tstamps.push(moment(key,"DD/MM/YY").valueOf())
+              }
+          }     
+    }
+        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(tod,"DD-MMM-YYYY").format("DD/MM/YY")}},last_upd_time_server:action.payload.timestamp.updated_date,initdata:action.payload,min_date:moment.utc(Math.min(...tstamps)).local().format("DD/MMM/yyyy")}
       }
-    },{loading:true,error:false,stats:{},last_upd_time_server:""}
+    },{loading:true,error:false,stats:{},last_upd_time_server:"",initdata:{},min_date:""}
   )
   //Functions
   React.useEffect(function() {

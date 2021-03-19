@@ -18,6 +18,7 @@ function StatePageDisplay(props) {
   let state = props.state
   let fromd = props.fromd
   let tod = props.tod
+  const minDate = props.stats.min_date
   let resjsx;
   const [fromselectedDate,setfromselectedDate] = React.useState(fromd)
   const [toselectedDate,settoselectedDate] = React.useState(tod)
@@ -47,8 +48,8 @@ function StatePageDisplay(props) {
     } else {
         betweenDate(sdate.current.from,sdate.current.to)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[fromselectedDate,toselectedDate])
-
   if (stats.loading === true) {
     resjsx = (<LoadingScreen />)
   } else if (stats.loading === false) {
@@ -70,8 +71,10 @@ function StatePageDisplay(props) {
                   disableToolbar
                   format="DD/MMM/yyyy"
                   margin="normal"
+                  error={false}
+                  minDateMessage={"Data before "+moment(minDate,"DD/MMM/yyyy").format("DD MMM")+" unavailable"}
                   label="From"
-                  minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
+                  minDate={moment(minDate,"DD/MMM/yyyy")}
                   InputProps={{ readOnly: true }}
                   value={fromselectedDate}
                   className="datepicker"
