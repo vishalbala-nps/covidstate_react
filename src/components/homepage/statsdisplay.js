@@ -31,7 +31,9 @@ function Statsdisplay(props){
                 }
             }
         }
-        props.setstatsstate({type:"DATA_UPDATE",payload:{data:apid,timestamp:{latest_updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}})
+        console.log(Math.max.apply(Math,tstamps))
+        console.log(tstamps.find(function(r){return r === toDate.valueOf()}))
+        props.setstatsstate({type:"DATA_UPDATE",payload:{data:apid,timestamp:{latest_updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
     }
     function resetDate() {
         let apid = {...props.statsstate.stats.apistats}

@@ -7,20 +7,104 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LoadingScreen from '../loading_screen.js'
 import ErrorScreen from '../onerror.js'
+/*import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
+import IconButton from '@material-ui/core/IconButton';
+import RefreshIcon from '@material-ui/icons/Refresh';*/
+import moment from "moment";
 
 function StatePageDisplay(props) {
   let stats = props.stats
   let state = props.state
+  let fromd = props.fromd
+  let tod = props.tod
   let resjsx;
+  const [fromselectedDate,setfromselectedDate] = React.useState(fromd)
+  const [toselectedDate,settoselectedDate] = React.useState(tod)
+  let maxd = React.useRef()
+  let firstdataload = React.useRef(false)
+  let sdate = React.useRef({from:fromselectedDate,to:toselectedDate})
+  let firstmount = React.useRef(true)
+  //Functions
+  function betweenDate(fromdate,todate) {
+    let apid = {...stats.stats.data}
+    let tstamps = []
+    for (let key in apid) {
+        if (apid.hasOwnProperty(key)) {
+            if (moment(key,"DD/MM/YY").isBetween(fromdate,todate,null,"[]")) {
+                tstamps.push(moment(key,"DD/MM/YY").valueOf())
+            } else {
+                delete apid[key]
+            }
+        }
+    }
+    props.setstats({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).format("DD/MM/YY")}}})
+  }
+  //Effects
+  React.useEffect(function() {
+    if (firstmount.current) {
+        firstmount.current = false
+    } else {
+        betweenDate(sdate.current.from,sdate.current.to)
+    }
+  },[fromselectedDate,toselectedDate])
+
   if (stats.loading === true) {
     resjsx = (<LoadingScreen />)
   } else if (stats.loading === false) {
     if (stats.error === true) {
       resjsx = (<ErrorScreen />)
     } else {
+      if (firstdataload.current === false) {
+        maxd.current = props.stats.stats.timestamp.updated_date
+        firstdataload.current = true
+      } 
       resjsx = (
         <>
           <Box m={1} data-testid="statestatscard">
+            {/*<MuiPickersUtilsProvider utils={MomentUtils}>
+            <Grid container justify="center" spacing={2}>
+              <Grid item>
+                <DatePicker
+                  variant="inline"
+                  disableToolbar
+                  format="DD/MMM/yyyy"
+                  margin="normal"
+                  label="From"
+                  minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
+                  InputProps={{ readOnly: true }}
+                  value={fromselectedDate}
+                  onChange={function(d) {
+                    tod = d
+                    sdate.current.from = d
+                    setfromselectedDate(d)
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <DatePicker
+                  variant="inline"
+                  disableToolbar
+                  format="DD/MMM/yyyy"
+                  margin="normal"
+                  label="To"
+                  maxDate={moment(moment(props.stats.stats.timestamp.updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
+                  InputProps={{ readOnly: true }}
+                  value={toselectedDate}
+                  onChange={function(d) {
+                    tod = d
+                    sdate.current.to = d
+                    settoselectedDate(d)
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <IconButton onClick={function() {
+                  console.log("todo")
+                }}><RefreshIcon /></IconButton>
+              </Grid>
+            </Grid>
+            </MuiPickersUtilsProvider>*/}
             <Grid container justify="center" spacing={2}>
               <Grid item md={6}>
                 <InfectedCard stats={stats.stats} state={state}/>

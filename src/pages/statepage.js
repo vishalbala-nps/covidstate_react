@@ -21,6 +21,10 @@ function Statepage(props) {
         return {loading:true,error:false,stats:{}}
       } else if (action.type === "DATA_ERROR") {
         return {loading:false,error:true,stats:{}}
+      } else if (action.type === "DATA_UPDATE") {
+        let nstate = state
+        nstate.stats = action.payload
+        return {...nstate}
       } else if (action.type === "DATA_LOADED") {
           let apid = {...action.payload.data}
           for (let key in apid) {
@@ -31,8 +35,7 @@ function Statepage(props) {
                   }
               }     
         }
-        console.log(moment(props.match.params.tod,"DD-MMM-YYYY"))
-        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(props.match.params.tod,"DD-MMM-YYYY").format("DD/MM/YY")}}}
+        return {loading:false,error:false,stats:{data:apid,timestamp:{updated_date:moment(tod,"DD-MMM-YYYY").format("DD/MM/YY")}}}
       }
     },{loading:true,error:false,stats:{}}
   )
@@ -70,7 +73,7 @@ function Statepage(props) {
         }
       }
     } />
-      <StatePageDisplay stats={stats} state={state} />
+      <StatePageDisplay stats={stats} state={state} setstats={setstats} fromd={moment(fromd,"DD-MMM-YYYY")} tod={moment(tod,"DD-MMM-YYYY")}/>
     </>
   )
 }
