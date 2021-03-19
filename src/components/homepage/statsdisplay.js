@@ -67,6 +67,7 @@ function Statsdisplay(props){
                                 format="DD/MMM/yyyy"
                                 margin="normal"
                                 label="From"
+                                className="datepicker"
                                 minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
                                 InputProps={{ readOnly: true }}
                                 value={fromselectedDate}
@@ -86,6 +87,7 @@ function Statsdisplay(props){
                                 disableToolbar
                                 format="DD/MMM/yyyy"
                                 margin="normal"
+                                className="datepicker"
                                 label="To"
                                 maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                                 InputProps={{ readOnly: true }}
@@ -103,7 +105,7 @@ function Statsdisplay(props){
                                 }}/>
                         </Grid>
                         <Grid item>
-                            <IconButton onClick={function() {
+                            <IconButton className="datepickericon" onClick={function() {
                                 resetDate()
                             }}><RefreshIcon /></IconButton>
                         </Grid>

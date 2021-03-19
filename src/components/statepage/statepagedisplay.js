@@ -74,6 +74,7 @@ function StatePageDisplay(props) {
                   minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
                   InputProps={{ readOnly: true }}
                   value={fromselectedDate}
+                  className="datepicker"
                   onChange={function(d) {
                     if (d.valueOf() < toselectedDate.valueOf()) {
                       if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
@@ -92,6 +93,7 @@ function StatePageDisplay(props) {
                   format="DD/MMM/yyyy"
                   margin="normal"
                   label="To"
+                  className="datepicker"
                   maxDate={moment(moment(props.stats.last_upd_time_server,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                   InputProps={{ readOnly: true }}
                   value={toselectedDate}
@@ -107,7 +109,7 @@ function StatePageDisplay(props) {
                 />
               </Grid>
               <Grid item>
-                <IconButton onClick={function() {
+                <IconButton className="datepickericon" onClick={function() {
                   props.setstats({type:"DATA_LOADED",payload:props.stats.initdata})
                 }}><RefreshIcon /></IconButton>
               </Grid>
