@@ -29,7 +29,8 @@
     "clean-cra-sw": "rm -f build/precache-manifest.*.js && rm -f build/service-worker.js",
     "build": "react-scripts build && npm run build-sw && npm run clean-cra-sw",
     "build-sw": "node ./src/sw-build.js",
-    "test": "CI=true react-scripts test a",
+    "test-interactive": "react-scripts test",
+    "test": "CI=true react-scripts test",
     "eject": "react-scripts eject",
     "build-docker": "npm run build && docker build . -t covidstate_react"
   },
