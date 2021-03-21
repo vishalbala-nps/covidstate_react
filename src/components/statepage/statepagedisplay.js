@@ -28,7 +28,7 @@ function StatePageDisplay(props) {
   let firstmount = React.useRef(true)
   //Functions
   function betweenDate(fromdate,todate) {
-    let apid = {...stats.stats.data}
+    let apid = {...stats.initdata.data}
     let tstamps = []
     for (let key in apid) {
         if (apid.hasOwnProperty(key)) {
@@ -39,6 +39,7 @@ function StatePageDisplay(props) {
             }
         }
     }
+    console.log({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
     props.setstats({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
   }
   //Effects
