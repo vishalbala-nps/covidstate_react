@@ -67,6 +67,7 @@ function Statsdisplay(props){
                                 format="DD/MMM/yyyy"
                                 margin="normal"
                                 label="From"
+                                autoOk={true}
                                 className="datepicker"
                                 minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
                                 InputProps={{ readOnly: true }}
@@ -88,6 +89,7 @@ function Statsdisplay(props){
                                 format="DD/MMM/yyyy"
                                 margin="normal"
                                 className="datepicker"
+                                autoOk={true}
                                 label="To"
                                 maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                                 InputProps={{ readOnly: true }}

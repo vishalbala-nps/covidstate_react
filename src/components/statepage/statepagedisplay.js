@@ -73,6 +73,7 @@ function StatePageDisplay(props) {
                   format="DD/MMM/yyyy"
                   margin="normal"
                   error={false}
+                  autoOk={true}
                   minDateMessage={"Data before "+moment(minDate,"DD/MMM/yyyy").format("DD MMM")+" unavailable"}
                   label="From"
                   minDate={moment(minDate,"DD/MMM/yyyy")}
@@ -97,6 +98,7 @@ function StatePageDisplay(props) {
                   format="DD/MMM/yyyy"
                   margin="normal"
                   label="To"
+                  autoOk={true}
                   className="datepicker"
                   maxDate={moment(moment(props.stats.last_upd_time_server,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                   InputProps={{ readOnly: true }}
