@@ -1,7 +1,6 @@
 import React from 'react';
 import Statstable from './table.js'
 import Typography from '@material-ui/core/Typography';
-import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
 import InfectedCard from './stats_cards/infected_card.js'
 import DeathCard from './stats_cards/deaths_card.js'
 import CuredCard from './stats_cards/cured_card.js'
@@ -11,8 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Box from '@material-ui/core/Box';
-import MomentUtils from '@date-io/moment';
 import moment from "moment";
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import DateAdapter from '@mui/lab/AdapterMoment';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import TextField from '@mui/material/TextField';
 
 let fromDate = moment("10/Mar/2020","DD/MMM/yyyy");
 let toDate = moment()
@@ -58,20 +60,14 @@ function Statsdisplay(props){
         },[fromselectedDate,toselectedDate])
         return (
             <Box m={1}>
-                <MuiPickersUtilsProvider utils={MomentUtils}>
+                <LocalizationProvider dateAdapter={DateAdapter}>
                     <Grid container justify="center" spacing={2}>
                         <Grid item>
-                            <DatePicker
-                                variant="inline"
-                                disableToolbar
-                                format="DD/MMM/yyyy"
-                                margin="normal"
+                            <DesktopDatePicker
                                 label="From"
-                                autoOk={true}
-                                className="datepicker"
-                                minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
-                                InputProps={{ readOnly: true }}
+                                format="DD/MMM/yyyy"
                                 value={fromselectedDate}
+                                minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
                                 onChange={function(d) {
                                     if (d.valueOf() < toselectedDate.valueOf()) {
                                         if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
@@ -80,20 +76,19 @@ function Statsdisplay(props){
                                             setfromselectedDate(d)
                                         }
                                     }
-                                }}/>
+                                }}
+                                className="datepicker"
+                                InputProps={{ readOnly: true }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
                         </Grid>
                         <Grid item>
-                            <DatePicker
-                                variant="inline"
-                                disableToolbar
-                                format="DD/MMM/yyyy"
-                                margin="normal"
-                                className="datepicker"
-                                autoOk={true}
+                            <DesktopDatePicker
                                 label="To"
+                                format="DD/MMM/yyyy"
+                                value={toselectedDate}
                                 maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                                 InputProps={{ readOnly: true }}
-                                value={toselectedDate}
                                 onChange={function(d) {
                                     console.log(d.format("DD/MMM/yyyy"))
                                     console.log(fromselectedDate.format("DD/MMM/yyyy"))
@@ -104,7 +99,10 @@ function Statsdisplay(props){
                                             settoselectedDate(d)
                                         }
                                     }
-                                }}/>
+                                }}
+                                className="datepicker"
+                                renderInput={(params) => <TextField {...params} />}
+                            />
                         </Grid>
                         <Grid item>
                             <IconButton className="datepickericon" onClick={function() {
@@ -112,7 +110,7 @@ function Statsdisplay(props){
                             }}><RefreshIcon /></IconButton>
                         </Grid>
                     </Grid>
-                </MuiPickersUtilsProvider>
+                </LocalizationProvider>
             </Box>
         )
     }
