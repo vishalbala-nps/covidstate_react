@@ -7,12 +7,13 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LoadingScreen from '../loading_screen.js'
 import ErrorScreen from '../onerror.js'
-import { MuiPickersUtilsProvider,DatePicker } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import DateAdapter from '@mui/lab/AdapterMoment';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import IconButton from '@material-ui/core/IconButton';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import moment from "moment";
-
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import TextField from '@mui/material/TextField';
 function StatePageDisplay(props) {
   let stats = props.stats
   let state = props.state
@@ -42,6 +43,14 @@ function StatePageDisplay(props) {
     console.log({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
     props.setstats({type:"DATA_UPDATE",payload:{data:apid,timestamp:{updated_date:moment.utc(Math.max(...tstamps)).local().format("DD/MM/YY")}}})
   }
+  function RenderMinDateMsg() {
+    const d = moment(minDate,"DD/MMM/yyyy").format("DD MMM")
+    if (d === "10 Mar") {
+      return null
+    } else {
+      return <p style={{fontSize:10}}>{"Data before "+d+" unavailable"}</p>
+    }
+  }
   //Effects
   React.useEffect(function() {
     if (firstmount.current) {
@@ -64,54 +73,49 @@ function StatePageDisplay(props) {
       resjsx = (
         <>
           <Box m={1} data-testid="statestatscard">
-            <MuiPickersUtilsProvider utils={MomentUtils}>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <br />
             <Grid container justify="center" spacing={2}>
               <Grid item>
-                <DatePicker
-                  variant="inline"
-                  disableToolbar
-                  format="DD/MMM/yyyy"
-                  margin="normal"
-                  error={false}
-                  autoOk={true}
-                  minDateMessage={"Data before "+moment(minDate,"DD/MMM/yyyy").format("DD MMM")+" unavailable"}
-                  label="From"
-                  minDate={moment(minDate,"DD/MMM/yyyy")}
-                  InputProps={{ readOnly: true }}
-                  value={fromselectedDate}
-                  className="datepicker"
-                  onChange={function(d) {
-                    if (d.valueOf() < toselectedDate.valueOf()) {
-                      if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
-                        fromd = d
-                        sdate.current.from = d
-                        setfromselectedDate(d)
+                <DesktopDatePicker
+                    label="From"
+                    format="DD/MMM/yyyy"
+                    error={false}
+                    InputProps={{ readOnly: true }}
+                    value={fromselectedDate}
+                    className="datepicker"
+                    onChange={function(d) {
+                      if (d.valueOf() < toselectedDate.valueOf()) {
+                        if (d.format("DD/MMM/yyyy") !== toselectedDate.format("DD/MMM/yyyy")) {
+                          fromd = d
+                          sdate.current.from = d
+                          setfromselectedDate(d)
+                        }
                       }
-                    }
-                  }}
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
                 />
+                <RenderMinDateMsg />
               </Grid>
               <Grid item>
-                <DatePicker
-                  variant="inline"
-                  disableToolbar
-                  format="DD/MMM/yyyy"
-                  margin="normal"
-                  label="To"
-                  autoOk={true}
-                  className="datepicker"
-                  maxDate={moment(moment(props.stats.last_upd_time_server,"mm/DD/yyyy").format("DD/mm/yyyy"))}
-                  InputProps={{ readOnly: true }}
-                  value={toselectedDate}
-                  onChange={function(d) {
-                    if (d.valueOf() > fromselectedDate.valueOf()) {
-                      if (d.format("DD/MMM/yyyy") !== fromselectedDate.format("DD/MMM/yyyy")) {
-                        tod = d
-                        sdate.current.to = d
-                        settoselectedDate(d)
+                <DesktopDatePicker
+                    label="To"
+                    format="DD/MMM/yyyy"
+                    autoOk={true}
+                    maxDate={moment(moment(props.stats.last_upd_time_server,"mm/DD/yyyy").format("DD/mm/yyyy"))}
+                    InputProps={{ readOnly: true }}
+                    value={toselectedDate}
+                    className="datepicker"
+                    onChange={function(d) {
+                      if (d.valueOf() > fromselectedDate.valueOf()) {
+                        if (d.format("DD/MMM/yyyy") !== fromselectedDate.format("DD/MMM/yyyy")) {
+                          tod = d
+                          sdate.current.to = d
+                          settoselectedDate(d)
+                        }
                       }
-                    }
-                  }}
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
                 />
               </Grid>
               <Grid item>
@@ -120,7 +124,7 @@ function StatePageDisplay(props) {
                 }}><RefreshIcon /></IconButton>
               </Grid>
             </Grid>
-            </MuiPickersUtilsProvider>
+            </LocalizationProvider>
             <Grid container justify="center" spacing={2}>
               <Grid item md={6}>
                 <InfectedCard stats={stats.stats} state={state}/>

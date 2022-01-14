@@ -78,7 +78,6 @@ function Statsdisplay(props){
                                     }
                                 }}
                                 className="datepicker"
-                                InputProps={{ readOnly: true }}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </Grid>
@@ -88,7 +87,6 @@ function Statsdisplay(props){
                                 format="DD/MMM/yyyy"
                                 value={toselectedDate}
                                 maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
-                                InputProps={{ readOnly: true }}
                                 onChange={function(d) {
                                     console.log(d.format("DD/MMM/yyyy"))
                                     console.log(fromselectedDate.format("DD/MMM/yyyy"))
