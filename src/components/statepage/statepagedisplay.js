@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import LoadingScreen from '../loading_screen.js'
 import ErrorScreen from '../onerror.js'
 import DateAdapter from '@mui/lab/AdapterMoment';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import DatePicker from '@mui/lab/DatePicker';
 import IconButton from '@material-ui/core/IconButton';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import moment from "moment";
@@ -77,7 +77,7 @@ function StatePageDisplay(props) {
             <br />
             <Grid container justify="center" spacing={2}>
               <Grid item>
-                <DesktopDatePicker
+                <DatePicker
                     label="From"
                     format="DD/MMM/yyyy"
                     error={false}
@@ -98,7 +98,7 @@ function StatePageDisplay(props) {
                 <RenderMinDateMsg />
               </Grid>
               <Grid item>
-                <DesktopDatePicker
+                <DatePicker
                     label="To"
                     format="DD/MMM/yyyy"
                     autoOk={true}

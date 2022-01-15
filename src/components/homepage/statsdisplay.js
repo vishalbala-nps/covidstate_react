@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Box from '@material-ui/core/Box';
 import moment from "moment";
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import DatePicker from '@mui/lab/DatePicker';
 import DateAdapter from '@mui/lab/AdapterMoment';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
@@ -63,7 +63,7 @@ function Statsdisplay(props){
                 <LocalizationProvider dateAdapter={DateAdapter}>
                     <Grid container justify="center" spacing={2}>
                         <Grid item>
-                            <DesktopDatePicker
+                            <DatePicker
                                 label="From"
                                 format="DD/MMM/yyyy"
                                 value={fromselectedDate}
@@ -82,7 +82,7 @@ function Statsdisplay(props){
                             />
                         </Grid>
                         <Grid item>
-                            <DesktopDatePicker
+                            <DatePicker
                                 label="To"
                                 format="DD/MMM/yyyy"
                                 value={toselectedDate}
