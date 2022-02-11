@@ -20,7 +20,7 @@
     "chart.js": "^2.9.4",
     "chartjs-plugin-labels": "^1.1.0",
     "moment": "^2.29.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.14.0",
     "react-chartjs-2": "^2.11.2",
     "react-dom": "^16.14.0",
