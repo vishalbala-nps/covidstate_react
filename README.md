@@ -6,7 +6,7 @@ React Web UI For covidstate.in
 - Git
 - (optional) Docker
 ### Installation
-- Clone the repo by running: `git clone https://github.com/vishalbala-nps/covidstate_api && cd covidstate_react`
+- Clone the repo by running: `git clone https://github.com/vishalbala-nps/covidstate_react && cd covidstate_react`
 - Install the necessary modules by running: `npm install`
 ### Configuration
 You can configure the API URL by editing `src/components/api_url.js`. By default, the API is set to the covidstate.in api
