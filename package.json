@@ -19,7 +19,7 @@
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "chartjs-plugin-labels": "^1.1.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-chartjs-2": "^2.11.2",
