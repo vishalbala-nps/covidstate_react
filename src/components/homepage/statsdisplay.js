@@ -15,7 +15,7 @@ import MomentUtils from '@date-io/moment';
 import moment from "moment";
 
 let fromDate = moment("10/Mar/2020","DD/MMM/yyyy");
-let toDate = moment()
+let toDate = moment("24/Jul/2023","DD/MMM/yyyy")
 
 function Statsdisplay(props){
     //Functions
@@ -91,6 +91,7 @@ function Statsdisplay(props){
                                 className="datepicker"
                                 autoOk={true}
                                 label="To"
+                                minDate={moment("10/Mar/2020","DD/MMM/yyyy")}
                                 maxDate={moment(moment(props.statsstate.stats.apistats.timestamp.latest_updated_date,"mm/DD/yyyy").format("DD/mm/yyyy"))}
                                 InputProps={{ readOnly: true }}
                                 value={toselectedDate}
