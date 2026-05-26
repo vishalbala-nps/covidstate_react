@@ -18,7 +18,7 @@ function FAQ(props) {
   },{loading:true,error:false,faqlist:[]})
   //Functions
   function getdata() {
-    axios.get(apiUrl+"/faqs").then(function(result) {
+    axios.get(apiUrl.faqs).then(function(result) {
       setfaq({
         type: "DATA_LOADED",
         payload: result.data

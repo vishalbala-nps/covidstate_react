@@ -18,7 +18,7 @@ function Contacts() {
   },{loading:true,error:false,messageslist:[]})
   //Functions
   function getdata() {
-    axios.get(apiUrl+"/contacts").then(function(result) {
+    axios.get(apiUrl.contacts).then(function(result) {
       setcontacts({
         type: "DATA_LOADED",
         payload: result.data

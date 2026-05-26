@@ -36,7 +36,7 @@ function HomePage() {
   }
   //Functions
   function getdata() {
-    axios.get(apiUrl+"/data?type=historical").then(function(result){
+    axios.get(apiUrl.historical).then(function(result){
       setstats({
         type: "DATA_LOADED",
         payload: result.data

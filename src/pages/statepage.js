@@ -49,7 +49,7 @@ function Statepage(props) {
   )
   //Functions
   React.useEffect(function() {
-    axios.get(apiUrl+"/data?type=historical&state="+state).then(function(result) {
+    axios.get(apiUrl.stateHistorical(state)).then(function(result) {
       setstats({
         type: "DATA_LOADED",
         payload: result.data
@@ -68,7 +68,7 @@ function Statepage(props) {
           setstats({
             type: "DATA_LOADING"
           })
-          axios.get(apiUrl+"/data?type=historical&state="+state).then(function(result) {
+          axios.get(apiUrl.stateHistorical(state)).then(function(result) {
             setstats({
               type: "DATA_LOADED",
               payload: result.data

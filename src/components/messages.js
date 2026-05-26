@@ -13,7 +13,7 @@ function Messages() {
         }
       },{loading:true,error:false,messageslist:[]})
     React.useEffect(function() {
-        axios.get(apiUrl+"/messages").then(function(result) {
+        axios.get(apiUrl.messages).then(function(result) {
             setmessages({
                 type: "DATA_LOADED",
                 payload: result.data["messages"]
