@@ -4,7 +4,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PhoneIcon from '@material-ui/icons/Phone';
 import InfoIcon from '@material-ui/icons/Info';
-import CodeIcon from '@material-ui/icons/Code';
 import ShareIcon from '@material-ui/icons/Share';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -75,10 +74,6 @@ function TitleBar(props) {
                 <ListItem button key="faq" onClick={function() {setdraweropen(false);history.push("/faq")}}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary="FAQ" />
-                </ListItem>
-                <ListItem button key="api" component="a" href="https://covidstate.in/api/docs">
-                    <ListItemIcon><CodeIcon /></ListItemIcon>
-                    <ListItemText primary="API" />
                 </ListItem>
                 <ListItem button key="share" onClick={function() {setdraweropen(false);setsharedialog(true)}}>
                     <ListItemIcon><ShareIcon /></ListItemIcon>

@@ -17,7 +17,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 
 let fromDate = moment("10/Mar/2020","DD/MMM/yyyy");
-let toDate = moment()
+let toDate = moment("07/24/2023", "MM/DD/YYYY")
 
 function Statsdisplay(props){
     //Functions

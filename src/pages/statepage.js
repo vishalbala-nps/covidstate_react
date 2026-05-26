@@ -13,7 +13,7 @@ function Statepage(props) {
     fromd = "10-Mar-2020"
   }
   if (tod === undefined) {
-    tod = moment().format("DD-MMM-YYYY")
+    tod = moment("07/24/2023", "MM/DD/YYYY").format("DD-MMM-YYYY")
   } 
   const [stats,setstats] = React.useReducer(
     function(state,action) {
