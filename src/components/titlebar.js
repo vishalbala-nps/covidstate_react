@@ -10,8 +10,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import Brightness2Icon from '@material-ui/icons/Brightness2';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
+//import Brightness2Icon from '@material-ui/icons/Brightness2';
+//import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { useHistory } from "react-router-dom";
 import useDarkMode from 'use-dark-mode';
 
