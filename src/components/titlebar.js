@@ -84,10 +84,10 @@ function TitleBar(props) {
                     <ListItemIcon><GitHubIcon /></ListItemIcon>
                     <ListItemText primary="View Github Repository" />
                 </ListItem>
-                <ListItem button key="darkmode" onClick={darkMode.toggle}>
+                {/*<ListItem button key="darkmode" onClick={darkMode.toggle}>
                     <ListItemIcon>{darkmodeicon}</ListItemIcon>
                     <ListItemText primary={darkmodetext}/>
-                </ListItem>
+                </ListItem>*/}
             </List>
         </Drawer>
         <AppBar position="static" className="navstyle">

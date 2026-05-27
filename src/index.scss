@@ -80,6 +80,75 @@ body.light-mode  {
     border-style: none;
   }
 }
+body.dark-mode  {
+  background-color: #fff;
+  color: #333;
+  .navstyle {
+    background-color: #346DCE;
+  }
+  .infectedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .infectedcardtab {
+    background-color: #AE5DC9;
+  }
+  .cardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .deathcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .deathcardtab {
+    background-color: #FD2D2D;
+  }
+  .curedcard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .curedcardtab {
+    background-color: #00CB58;
+  }
+  .activecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .activecardtab {
+    background-color: #FFBB33;
+  }
+  .piecard {
+    border-color: #ffffff;
+    border-style: none;
+  }
+  .piecardtab {
+    background-color: #AE5DC9;
+  }
+  .cardchart {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .statstable {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .faqs {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .natcontacts {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .messages {
+    color: #253883;
+    background-color: #CEE3FE;
+    border-color: #000000;
+    border-style: none;
+  }
+}
+/*
 body.dark-mode {
   background-color: #10171d;
   color: #dfdfdf;
@@ -153,5 +222,5 @@ body.dark-mode {
   .datepickericon {
     color:#e8e8e8;
   }
-}
+}*/
 
