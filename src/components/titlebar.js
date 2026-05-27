@@ -25,12 +25,12 @@ function TitleBar(props) {
   const darkMode = useDarkMode(false,darkmodeconfig);
   let history = useHistory();
   if (props.type === "hometitle"){
-    let darkmodetext = "Enable Dark Mode"
+    /*let darkmodetext = "Enable Dark Mode"
     let darkmodeicon = <Brightness2Icon />
     if (darkMode.value) {
         darkmodetext = "Disable Dark Mode"
         darkmodeicon = <WbSunnyIcon />
-    }
+    }*/
     return (
         <>
         <Dialog open={sharedialog} onClose={function(){setsharedialog(false)}}>
